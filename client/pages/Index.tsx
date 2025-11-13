@@ -50,7 +50,7 @@ export default function Index() {
   return (
     <div id="home" className="relative">
       {/* Hero */}
-      <section className="relative py-24 sm:py-32 md:py-40">
+      <section className="relative min-h-screen flex flex-col justify-center py-24 sm:py-32 md:py-40">
         <div className="absolute inset-0 -z-10">
           <div className="absolute inset-0 dark:bg-[linear-gradient(180deg,rgba(2,6,23,0.7),transparent_40%),radial-gradient(600px_200px_at_50%_0px,rgba(56,189,248,0.25),transparent)] bg-[radial-gradient(800px_300px_at_50%_0px,rgba(14,165,233,0.10),transparent)]" />
         </div>
