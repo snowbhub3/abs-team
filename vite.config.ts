@@ -9,7 +9,13 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
     fs: {
-      allow: ["./client", "./shared"],
+      // Додаємо кореневу директорію проекту
+      allow: [
+        ".",              // Поточна директорія (корінь проекту)
+        "./client",
+        "./shared",
+        path.resolve(__dirname, ".")  // Абсолютний шлях до кореня
+      ],
       deny: [".env", ".env.*", "*.{crt,pem}", "**/.git/**", "server/**"],
     },
   },
@@ -31,7 +37,6 @@ function expressPlugin(): Plugin {
     apply: "serve", // Only apply during development (serve mode)
     configureServer(server) {
       const app = createServer();
-
       // Add Express app as middleware to Vite dev server
       server.middlewares.use(app);
     },
