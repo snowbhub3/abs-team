@@ -4,7 +4,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
 import { useI18n } from "@/components/layout/Language";
 import { ArrowRight, Sparkles, Rocket, LineChart, PenTool, Shield, Mail } from "lucide-react";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 
 export default function Index() {
   const { t } = useI18n();
