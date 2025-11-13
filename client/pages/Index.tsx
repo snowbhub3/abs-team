@@ -131,12 +131,12 @@ export default function Index() {
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {[
-              { name: "Builder.io", href: "https://www.builder.io", img: "https://image.thum.io/get/width/1200/https://www.builder.io" },
-              { name: "Vercel", href: "https://vercel.com", img: "https://image.thum.io/get/width/1200/https://vercel.com" },
-              { name: "Supabase", href: "https://supabase.com", img: "https://image.thum.io/get/width/1200/https://supabase.com" },
-              { name: "Stripe", href: "https://stripe.com", img: "https://image.thum.io/get/width/1200/https://stripe.com" },
-              { name: "Netlify", href: "https://www.netlify.com", img: "https://image.thum.io/get/width/1200/https://www.netlify.com" },
-              { name: "Notion", href: "https://www.notion.so", img: "https://image.thum.io/get/width/1200/https://www.notion.so" },
+              { name: "Template Williams", href: "https://www.template-williams.de.rs/", img: "https://image.thum.io/get/width/1200/https://www.template-williams.de.rs/" },
+              { name: "Template Creation", href: "https://www.template-creation.de.rs/", img: "https://image.thum.io/get/width/1200/https://www.template-creation.de.rs/" },
+              { name: "Template Transportable", href: "https://www.template-transportable.de.rs/", img: "https://image.thum.io/get/width/1200/https://www.template-transportable.de.rs/" },
+              { name: "Isabella Harris", href: "https://www.isabellaharris.org/", img: "https://image.thum.io/get/width/1200/https://www.isabellaharris.org/" },
+              { name: "Template Benson", href: "https://www.template-benson.de.rs/", img: "https://image.thum.io/get/width/1200/https://www.template-benson.de.rs/" },
+              { name: "Gotham", href: "https://gotham.com.ua/", img: "https://image.thum.io/get/width/1200/https://gotham.com.ua/" },
             ].map((item, i) => (
               <a
                 key={item.name}
