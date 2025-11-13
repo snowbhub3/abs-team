@@ -20,7 +20,11 @@ export default function CookieBanner() {
 
   const text = locale === "ru"
     ? "Мы используем cookies для улучшения работы сайта и анализа трафика."
-    : "Ми використовуємо cookies для покращення роботи сайту та аналізу трафіку.";
+    : "We use cookies to improve your experience and analyze traffic.";
+
+  const rejectLabel = locale === "ru" ? "Отклонить" : "Reject";
+  const acceptLabel = locale === "ru" ? "Принять" : "Accept";
+  const closeLabel = locale === "ru" ? "Закрыть" : "Close";
 
   const accept = () => {
     // Встановлюємо кукі на 1 рік
