@@ -164,29 +164,38 @@
   }
 
   /* 3D Flip Animation */
-  @keyframes flip-horizontal {
+  @keyframes flip-in {
     0% {
-      transform: rotateY(0deg);
+      opacity: 1;
+      transform: rotateY(0deg) scale(1);
     }
-    50% {
-      transform: rotateY(90deg);
+    45% {
+      opacity: 0.7;
+      transform: rotateY(90deg) scale(1.02);
     }
     100% {
-      transform: rotateY(180deg);
+      opacity: 1;
+      transform: rotateY(180deg) scale(1);
     }
   }
 
-  @keyframes flip-horizontal-reverse {
+  @keyframes flip-out {
     0% {
-      transform: rotateY(180deg);
+      opacity: 1;
+      transform: rotateY(180deg) scale(1);
+    }
+    45% {
+      opacity: 0.7;
+      transform: rotateY(90deg) scale(1.02);
     }
     100% {
-      transform: rotateY(0deg);
+      opacity: 1;
+      transform: rotateY(0deg) scale(1);
     }
   }
 
   .flip-card-container {
-    perspective: 1000px;
+    perspective: 1200px;
   }
 
   .flip-card {
@@ -197,11 +206,11 @@
   }
 
   .flip-card.flipped {
-    animation: flip-horizontal 0.6s ease-in-out forwards;
+    animation: flip-in 0.6s ease-in-out forwards;
   }
 
   .flip-card.unflipping {
-    animation: flip-horizontal-reverse 0.6s ease-in-out forwards;
+    animation: flip-out 0.6s ease-in-out forwards;
   }
 
   .flip-card-content {
