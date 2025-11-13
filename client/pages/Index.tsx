@@ -79,12 +79,48 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Services */}
-      <section id="services" className="py-20">
+      {/* Services - What we do */}
+      <section id="services" className="relative min-h-screen flex flex-col justify-center py-20 lg:py-32">
         <div className="container">
-          <h2 className="text-3xl font-bold mb-2">{t("section_services_title")}</h2>
-          <p className="text-muted-foreground mb-8">{t("section_services_sub")}</p>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <h2 className="text-3xl lg:text-5xl font-bold mb-2">{t("section_services_title")}</h2>
+          <p className="text-muted-foreground mb-12 lg:mb-16 text-lg">{t("section_services_sub")}</p>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 auto-rows-max">
+            {[
+              { id: "service-0", icon: <Rocket className="h-6 w-6" />, text: t("s1") },
+              { id: "service-1", icon: <PenTool className="h-6 w-6" />, text: t("s2") },
+              { id: "service-2", icon: <LineChart className="h-6 w-6" />, text: t("s3") },
+              { id: "service-3", icon: <Shield className="h-6 w-6" />, text: t("s4") },
+            ].map((item, i) => {
+              const isFlipped = flippedCards.has(item.id);
+              return (
+                <div
+                  key={item.id}
+                  data-reveal
+                  style={{ transitionDelay: `${i * 80}ms` }}
+                  className="flip-card-container hidden lg:block"
+                >
+                  <Card
+                    onClick={() => toggleFlip(item.id)}
+                    className={`flip-card group relative overflow-hidden border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/[0.03] p-8 lg:p-10 h-64 lg:h-80 transition-all duration-700 ease-out opacity-0 translate-y-4 hover:bg-black/10 dark:hover:bg-white/[0.06] cursor-pointer data-[inview=true]:opacity-100 data-[inview=true]:translate-y-0 ${
+                      isFlipped ? "flipped" : ""
+                    }`}
+                  >
+                    <div className="flip-card-content flex-col">
+                      <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-md bg-cyan-500/15 text-cyan-300">
+                        {item.icon}
+                      </div>
+                      <p className="text-base text-foreground/90 leading-relaxed flex-1 flex items-center">
+                        {item.text}
+                      </p>
+                    </div>
+                    <div className="pointer-events-none absolute -right-10 -top-10 h-24 w-24 rounded-full bg-cyan-500/10 blur-2xl transition-transform group-hover:scale-125" />
+                  </Card>
+                </div>
+              );
+            })}
+          </div>
+          {/* Mobile version - smaller cards */}
+          <div className="grid gap-6 sm:grid-cols-2 lg:hidden">
             {[
               { icon: <Rocket className="h-5 w-5" />, text: t("s1") },
               { icon: <PenTool className="h-5 w-5" />, text: t("s2") },
