@@ -248,7 +248,7 @@ export default function Index() {
       </section>
 
       {/* Contact */}
-      <section id="contact" className="py-20 bg-white/[0.02]">
+      <section id="contact" className="relative min-h-screen flex flex-col justify-center py-20 lg:py-32 bg-white/[0.02]">
         <div className="container grid gap-8 md:grid-cols-2 items-center">
           <div>
             <h2 className="text-3xl font-bold mb-2">{t("contact_title")}</h2>
