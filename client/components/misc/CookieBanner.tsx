@@ -76,21 +76,21 @@ export default function CookieBanner() {
                 <button
                   onClick={reject}
                   className="px-3 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm rounded-lg font-medium transition-all duration-200 border border-black/15 dark:border-white/10 text-foreground/70 hover:text-foreground hover:bg-black/5 dark:hover:bg-white/5 active:scale-95"
-                  aria-label={locale === "ru" ? "Отклонить" : "Відхилити"}
+                  aria-label={rejectLabel}
                 >
-                  {locale === "ru" ? "Отклонить" : "Відхилити"}
+                  {rejectLabel}
                 </button>
                 <button
                   onClick={accept}
                   className="px-4 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-sm rounded-lg font-semibold bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-400 hover:to-sky-500 text-white shadow-lg shadow-sky-500/25 transition-all duration-200 active:scale-95"
-                  aria-label={locale === "ru" ? "Принять" : "Прийняти"}
+                  aria-label={acceptLabel}
                 >
-                  {locale === "ru" ? "Принять" : "Прийняти"}
+                  {acceptLabel}
                 </button>
                 <button
                   onClick={reject}
                   className="p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg transition-colors duration-200"
-                  aria-label="Закрити"
+                  aria-label={closeLabel}
                 >
                   <X className="h-4 w-4 text-foreground/60" />
                 </button>
