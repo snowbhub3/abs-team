@@ -101,7 +101,7 @@ export default function Index() {
                 >
                   <Card
                     onClick={() => toggleFlip(item.id)}
-                    className={`flip-card group relative overflow-hidden border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/[0.03] p-6 h-56 transition-all duration-700 ease-out opacity-0 translate-y-4 hover:bg-black/10 dark:hover:bg-white/[0.06] cursor-pointer data-[inview=true]:opacity-100 data-[inview=true]:translate-y-0 ${
+                    className={`flip-card group relative overflow-hidden border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/[0.03] p-6 h-56 hover:bg-black/10 dark:hover:bg-white/[0.06] cursor-pointer opacity-0 translate-y-4 data-[inview=true]:opacity-100 data-[inview=true]:translate-y-0 data-[inview=true]:transition-all data-[inview=true]:duration-700 ${
                       isFlipped ? "flipped" : ""
                     }`}
                   >
@@ -161,7 +161,7 @@ export default function Index() {
                 >
                   <li
                     onClick={() => toggleFlip(cardId)}
-                    className={`flip-card relative flex flex-col rounded-xl border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/[0.03] p-6 h-56 transition-all duration-700 ease-out opacity-0 translate-y-4 hover:border-cyan-500/30 hover:bg-black/8 dark:hover:bg-white/[0.05] cursor-pointer data-[inview=true]:opacity-100 data-[inview=true]:translate-y-0 ${
+                    className={`flip-card relative flex flex-col rounded-xl border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/[0.03] p-6 h-56 hover:border-cyan-500/30 hover:bg-black/8 dark:hover:bg-white/[0.05] cursor-pointer opacity-0 translate-y-4 data-[inview=true]:opacity-100 data-[inview=true]:translate-y-0 data-[inview=true]:transition-all data-[inview=true]:duration-700 ${
                       isFlipped ? "flipped" : ""
                     }`}
                   >
