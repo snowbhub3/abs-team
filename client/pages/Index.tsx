@@ -204,10 +204,10 @@ export default function Index() {
       </section>
 
       {/* Projects */}
-      <section id="projects" className="py-20">
+      <section id="projects" className="relative min-h-screen flex flex-col justify-center py-20 lg:py-32">
         <div className="container">
-          <div className="mb-6 flex items-center justify-between">
-            <h2 className="text-3xl font-bold">{t("section_projects_title")}</h2>
+          <div className="mb-8 lg:mb-12 flex items-center justify-between">
+            <h2 className="text-3xl lg:text-5xl font-bold">{t("section_projects_title")}</h2>
             <a href="#contact" className="text-sm rounded-md border border-white/10 bg-white/5 px-3 py-1.5 hover:bg-white/10">
               {t("start_similar")}
             </a>
