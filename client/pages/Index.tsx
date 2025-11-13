@@ -10,6 +10,19 @@ export default function Index() {
   const { t } = useI18n();
   const { toast } = useToast();
   const msgRef = useRef<HTMLTextAreaElement | null>(null);
+  const [flippedCards, setFlippedCards] = useState<Set<string>>(new Set());
+
+  const toggleFlip = (cardId: string) => {
+    setFlippedCards((prev) => {
+      const newSet = new Set(prev);
+      if (newSet.has(cardId)) {
+        newSet.delete(cardId);
+      } else {
+        newSet.add(cardId);
+      }
+      return newSet;
+    });
+  };
 
   const send = (e: React.FormEvent) => {
     e.preventDefault();
