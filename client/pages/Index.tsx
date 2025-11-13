@@ -144,11 +144,43 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Process */}
-      <section id="process" className="py-20 bg-white/[0.02]">
+      {/* Process - How we work */}
+      <section id="process" className="relative min-h-screen flex flex-col justify-center py-20 lg:py-32 bg-white/[0.02]">
         <div className="container">
-          <h2 className="text-3xl font-bold mb-10">{t("section_process_title")}</h2>
-          <ol className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <h2 className="text-3xl lg:text-5xl font-bold mb-10 lg:mb-16">{t("section_process_title")}</h2>
+          <ol className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 auto-rows-max">
+            {[1, 2, 3, 4].map((n, i) => {
+              const cardId = `process-${n}`;
+              const isFlipped = flippedCards.has(cardId);
+              return (
+                <div
+                  key={n}
+                  data-reveal
+                  style={{ transitionDelay: `${i * 90}ms` }}
+                  className="flip-card-container hidden lg:block"
+                >
+                  <li
+                    onClick={() => toggleFlip(cardId)}
+                    className={`flip-card relative flex flex-col rounded-xl border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/[0.03] p-8 lg:p-10 min-h-80 transition-all duration-700 ease-out opacity-0 translate-y-4 hover:border-cyan-500/30 hover:bg-black/8 dark:hover:bg-white/[0.05] cursor-pointer data-[inview=true]:opacity-100 data-[inview=true]:translate-y-0 ${
+                      isFlipped ? "flipped" : ""
+                    }`}
+                  >
+                    <span className="pointer-events-none select-none absolute right-6 top-6 text-6xl lg:text-7xl font-black text-black/10 dark:text-white/10">
+                      {String(n).padStart(2, "0")}
+                    </span>
+                    <h3 className="mb-4 text-xl lg:text-2xl font-semibold relative z-10">
+                      {t(`process_${n}_title`)}
+                    </h3>
+                    <p className="text-base text-muted-foreground leading-relaxed flex-1 flex items-center">
+                      {t(`process_${n}_desc`)}
+                    </p>
+                  </li>
+                </div>
+              );
+            })}
+          </ol>
+          {/* Mobile version - smaller cards */}
+          <div className="grid gap-6 sm:grid-cols-2 lg:hidden">
             {[1, 2, 3, 4].map((n, i) => (
               <li
                 key={n}
@@ -156,7 +188,9 @@ export default function Index() {
                 style={{ transitionDelay: `${i * 90}ms` }}
                 className="relative flex flex-col rounded-xl border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/[0.03] p-6 min-h-[160px] transition-all duration-700 ease-out opacity-0 translate-y-4 active:scale-[0.98] data-[inview=true]:opacity-100 data-[inview=true]:translate-y-0"
               >
-                <span className="pointer-events-none select-none absolute right-4 top-3 text-5xl font-black text-black/10 dark:text-white/10">{String(n).padStart(2, "0")}</span>
+                <span className="pointer-events-none select-none absolute right-4 top-3 text-5xl font-black text-black/10 dark:text-white/10">
+                  {String(n).padStart(2, "0")}
+                </span>
                 <h3 className="mb-2 text-lg font-semibold relative z-10">
                   {t(`process_${n}_title`)}
                 </h3>
@@ -165,7 +199,7 @@ export default function Index() {
                 </p>
               </li>
             ))}
-          </ol>
+          </div>
         </div>
       </section>
 
