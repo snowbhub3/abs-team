@@ -127,53 +127,28 @@ export default function Index() {
               const cardId = `process-${n}`;
               const isFlipped = flippedCards.has(cardId);
               return (
-                <div
+                <li
                   key={n}
+                  onClick={() => toggleFlip(cardId)}
                   data-reveal
                   style={{ transitionDelay: `${i * 90}ms` }}
-                  className="flip-card-container hidden lg:block"
+                  className={`flip-card relative flex flex-col rounded-xl border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/[0.03] p-6 h-56 hover:border-cyan-500/30 hover:bg-black/8 dark:hover:bg-white/[0.05] cursor-pointer opacity-0 translate-y-4 data-[inview=true]:opacity-100 data-[inview=true]:translate-y-0 data-[inview=true]:transition-all data-[inview=true]:duration-700 ${
+                    isFlipped ? "flipped" : ""
+                  }`}
                 >
-                  <li
-                    onClick={() => toggleFlip(cardId)}
-                    className={`flip-card relative flex flex-col rounded-xl border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/[0.03] p-6 h-56 hover:border-cyan-500/30 hover:bg-black/8 dark:hover:bg-white/[0.05] cursor-pointer opacity-0 translate-y-4 data-[inview=true]:opacity-100 data-[inview=true]:translate-y-0 data-[inview=true]:transition-all data-[inview=true]:duration-700 ${
-                      isFlipped ? "flipped" : ""
-                    }`}
-                  >
-                    <span className="pointer-events-none select-none absolute right-4 top-4 text-4xl font-black text-black/10 dark:text-white/10">
-                      {String(n).padStart(2, "0")}
-                    </span>
-                    <h3 className="mb-2 text-base font-semibold relative z-10">
-                      {t(`process_${n}_title`)}
-                    </h3>
-                    <p className="text-sm text-foreground leading-relaxed">
-                      {t(`process_${n}_desc`)}
-                    </p>
-                  </li>
-                </div>
+                  <span className="pointer-events-none select-none absolute right-4 top-4 text-4xl font-black text-black/10 dark:text-white/10">
+                    {String(n).padStart(2, "0")}
+                  </span>
+                  <h3 className="mb-2 text-base font-semibold relative z-10">
+                    {t(`process_${n}_title`)}
+                  </h3>
+                  <p className="text-sm text-foreground leading-relaxed">
+                    {t(`process_${n}_desc`)}
+                  </p>
+                </li>
               );
             })}
           </ol>
-          {/* Mobile version - smaller cards */}
-          <div className="grid gap-6 sm:grid-cols-2 lg:hidden">
-            {[1, 2, 3, 4].map((n, i) => (
-              <li
-                key={n}
-                data-reveal
-                style={{ transitionDelay: `${i * 90}ms` }}
-                className="relative flex flex-col rounded-xl border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/[0.03] p-6 min-h-[160px] transition-all duration-700 ease-out opacity-0 translate-y-4 active:scale-[0.98] data-[inview=true]:opacity-100 data-[inview=true]:translate-y-0"
-              >
-                <span className="pointer-events-none select-none absolute right-4 top-3 text-5xl font-black text-black/10 dark:text-white/10">
-                  {String(n).padStart(2, "0")}
-                </span>
-                <h3 className="mb-2 text-lg font-semibold relative z-10">
-                  {t(`process_${n}_title`)}
-                </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {t(`process_${n}_desc`)}
-                </p>
-              </li>
-            ))}
-          </div>
         </div>
       </section>
 
