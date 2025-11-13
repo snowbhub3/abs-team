@@ -93,53 +93,27 @@ export default function Index() {
             ].map((item, i) => {
               const isFlipped = flippedCards.has(item.id);
               return (
-                <div
+                <Card
                   key={item.id}
+                  onClick={() => toggleFlip(item.id)}
                   data-reveal
                   style={{ transitionDelay: `${i * 80}ms` }}
-                  className="flip-card-container hidden lg:block"
+                  className={`flip-card group relative overflow-hidden border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/[0.03] p-6 h-56 hover:bg-black/10 dark:hover:bg-white/[0.06] cursor-pointer opacity-0 translate-y-4 data-[inview=true]:opacity-100 data-[inview=true]:translate-y-0 data-[inview=true]:transition-all data-[inview=true]:duration-700 ${
+                    isFlipped ? "flipped" : ""
+                  }`}
                 >
-                  <Card
-                    onClick={() => toggleFlip(item.id)}
-                    className={`flip-card group relative overflow-hidden border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/[0.03] p-6 h-56 hover:bg-black/10 dark:hover:bg-white/[0.06] cursor-pointer opacity-0 translate-y-4 data-[inview=true]:opacity-100 data-[inview=true]:translate-y-0 data-[inview=true]:transition-all data-[inview=true]:duration-700 ${
-                      isFlipped ? "flipped" : ""
-                    }`}
-                  >
-                    <div className="flip-card-content flex flex-col h-full justify-center items-center text-center">
-                      <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-md bg-cyan-500/15 text-cyan-300">
-                        {item.icon}
-                      </div>
-                      <p className="text-sm text-foreground leading-relaxed">
-                        {item.text}
-                      </p>
+                  <div className="flip-card-content flex flex-col h-full justify-center items-center text-center">
+                    <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-md bg-cyan-500/15 text-cyan-300">
+                      {item.icon}
                     </div>
-                    <div className="pointer-events-none absolute -right-10 -top-10 h-24 w-24 rounded-full bg-cyan-500/10 blur-2xl transition-transform group-hover:scale-125" />
-                  </Card>
-                </div>
+                    <p className="text-sm text-foreground leading-relaxed">
+                      {item.text}
+                    </p>
+                  </div>
+                  <div className="pointer-events-none absolute -right-10 -top-10 h-24 w-24 rounded-full bg-cyan-500/10 blur-2xl transition-transform group-hover:scale-125" />
+                </Card>
               );
             })}
-          </div>
-          {/* Mobile version - smaller cards */}
-          <div className="grid gap-6 sm:grid-cols-2 lg:hidden">
-            {[
-              { icon: <Rocket className="h-5 w-5" />, text: t("s1") },
-              { icon: <PenTool className="h-5 w-5" />, text: t("s2") },
-              { icon: <LineChart className="h-5 w-5" />, text: t("s3") },
-              { icon: <Shield className="h-5 w-5" />, text: t("s4") },
-            ].map((item, i) => (
-              <Card
-                key={i}
-                data-reveal
-                style={{ transitionDelay: `${i * 80}ms` }}
-                className="group relative overflow-hidden border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/[0.03] p-5 transition-all duration-700 ease-out opacity-0 translate-y-4 hover:bg-black/10 dark:hover:bg-white/[0.06] active:scale-[0.98] data-[inview=true]:opacity-100 data-[inview=true]:translate-y-0"
-              >
-                <div className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-md bg-cyan-500/15 text-cyan-300">
-                  {item.icon}
-                </div>
-                <p className="text-sm text-foreground/90 leading-relaxed">{item.text}</p>
-                <div className="pointer-events-none absolute -right-10 -top-10 h-24 w-24 rounded-full bg-cyan-500/10 blur-2xl transition-transform group-hover:scale-125" />
-              </Card>
-            ))}
           </div>
         </div>
       </section>
