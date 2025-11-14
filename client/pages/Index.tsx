@@ -11,8 +11,14 @@ export default function Index() {
   const { toast } = useToast();
   const msgRef = useRef<HTMLTextAreaElement | null>(null);
   const [flippedCards, setFlippedCards] = useState<Set<string>>(new Set());
+  const animatingRef = useRef<Set<string>>(new Set());
 
   const toggleFlip = (cardId: string) => {
+    // Запобігаємо повторному натиску під час анімації
+    if (animatingRef.current.has(cardId)) return;
+
+    animatingRef.current.add(cardId);
+
     setFlippedCards((prev) => {
       const newSet = new Set(prev);
       if (newSet.has(cardId)) {
@@ -22,6 +28,11 @@ export default function Index() {
       }
       return newSet;
     });
+
+    // Після анімації, дозволяємо новий клік
+    setTimeout(() => {
+      animatingRef.current.delete(cardId);
+    }, 800);
   };
 
   const send = (e: React.FormEvent) => {
