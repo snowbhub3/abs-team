@@ -188,7 +188,7 @@ export default function Index() {
                 rel="noopener"
                 data-reveal
                 style={{ transitionDelay: `${i * 80}ms` }}
-                className="group relative overflow-hidden rounded-xl border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/[0.035] transition-all duration-700 ease-out opacity-0 translate-y-4 active:scale-[0.985] data-[inview=true]:opacity-100 data-[inview=true]:translate-y-0"
+                className="project-card group relative overflow-hidden rounded-xl border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/[0.035] transition-all duration-700 ease-out opacity-0 translate-y-4 active:scale-[0.985] data-[inview=true]:opacity-100 data-[inview=true]:translate-y-0"
               >
                 <div className="aspect-[16/10] w-full overflow-hidden">
                   <img src={item.img} alt={item.name} className="h-full w-full object-cover group-hover:scale-[1.03] transition-transform"/>
