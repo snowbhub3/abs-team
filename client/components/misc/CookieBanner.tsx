@@ -27,7 +27,7 @@ export default function CookieBanner() {
   const acceptLabel = locale === "ru" ? "Принять" : "Accept";
 
   const accept = () => {
-    // Встановлюємо кукі на 1 рік
+    // Встан��влюємо кукі на 1 рік
     try {
       document.cookie = `consent=1; path=/; max-age=${60*60*24*365}`;
     } catch {}
@@ -48,9 +48,9 @@ export default function CookieBanner() {
 
   if (!show) return null;
 
-  return (
+  const content = (
     <div
-      className={`fixed inset-x-0 bottom-0 z-[999] px-2 sm:px-4 md:px-6 py-3 sm:py-4 md:py-6 pointer-events-auto ${
+      className={`fixed inset-x-0 bottom-0 z-[9999] px-2 sm:px-4 md:px-6 py-3 sm:py-4 md:py-6 pointer-events-auto ${
         isClosing
           ? "opacity-0 translate-y-full transition-all duration-300"
           : "cookie-banner-enter"
@@ -80,7 +80,7 @@ export default function CookieBanner() {
                 
                 <div className="flex-1 min-w-0">
                   <h3 className="text-sm sm:text-base font-semibold text-foreground mb-1">
-                    {locale === "ru" ? "Использование cookies" : "Cookie Policy"}
+                    {locale === "ru" ? "Испол��зование cookies" : "Cookie Policy"}
                   </h3>
                   <p className="text-xs sm:text-sm text-foreground/75 dark:text-foreground/70 leading-relaxed">
                     {text}
