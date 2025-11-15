@@ -131,36 +131,42 @@ export default function Index() {
       </section>
 
       {/* Process - How we work */}
-      <section id="process" className="relative min-h-screen flex flex-col justify-center py-20 lg:py-32 bg-white/[0.02]">
+      <section id="process" className="relative min-h-screen flex flex-col pt-20 lg:pt-32 pb-12 lg:pb-20 bg-white/[0.02]">
         <div className="container">
-          <h2 className="text-3xl lg:text-5xl font-bold mb-10 lg:mb-16">{t("section_process_title")}</h2>
-          <ol className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {[1, 2, 3, 4].map((n, i) => {
-              const cardId = `process-${n}`;
-              const isAnimating = flippedCards.has(cardId);
-              return (
-                <li
-                  key={n}
-                  onClick={() => toggleFlip(cardId)}
-                  data-reveal
-                  style={{ transitionDelay: `${i * 90}ms` }}
-                  className={`flip-card relative flex flex-col rounded-xl border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/[0.03] p-6 h-56 lg:h-72 hover:border-cyan-500/30 hover:bg-black/8 dark:hover:bg-white/[0.05] cursor-pointer opacity-0 translate-y-4 data-[inview=true]:opacity-100 data-[inview=true]:translate-y-0 data-[inview=true]:transition-all data-[inview=true]:duration-700 ${
-                    isAnimating ? "flipped" : ""
-                  }`}
-                >
-                  <span className="pointer-events-none select-none absolute right-4 top-4 text-4xl font-black text-black/10 dark:text-white/10">
-                    {String(n).padStart(2, "0")}
-                  </span>
-                  <h3 className="mb-2 text-base font-semibold relative z-10">
-                    {t(`process_${n}_title`)}
-                  </h3>
-                  <p className="text-sm text-foreground leading-relaxed">
-                    {t(`process_${n}_desc`)}
-                  </p>
-                </li>
-              );
-            })}
-          </ol>
+          <div className="mb-12 lg:mb-20">
+            <h2 className="text-3xl lg:text-5xl font-bold mb-3">{t("section_process_title")}</h2>
+          </div>
+          <div className="flex-1 flex items-center">
+            <ol className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 w-full">
+              {[1, 2, 3, 4].map((n, i) => {
+                const cardId = `process-${n}`;
+                const isAnimating = flippedCards.has(cardId);
+                return (
+                  <li
+                    key={n}
+                    onClick={() => toggleFlip(cardId)}
+                    data-reveal
+                    style={{ transitionDelay: `${i * 90}ms` }}
+                    className={`flip-card relative flex flex-col rounded-xl border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/[0.03] p-6 h-56 lg:h-72 hover:border-cyan-500/30 hover:bg-black/8 dark:hover:bg-white/[0.05] cursor-pointer opacity-0 translate-y-4 data-[inview=true]:opacity-100 data-[inview=true]:translate-y-0 data-[inview=true]:transition-all data-[inview=true]:duration-700 ${
+                      isAnimating ? "flipped" : ""
+                    }`}
+                  >
+                    <div className="flex flex-col h-full">
+                      <span className="pointer-events-none select-none text-6xl lg:text-7xl font-black text-black/10 dark:text-white/10 leading-none mb-2 lg:mb-3">
+                        {String(n).padStart(2, "0")}
+                      </span>
+                      <h3 className="text-base lg:text-lg font-semibold relative z-10 mb-2 lg:mb-3">
+                        {t(`process_${n}_title`)}
+                      </h3>
+                      <p className="text-sm lg:text-base text-foreground leading-relaxed flex-1">
+                        {t(`process_${n}_desc`)}
+                      </p>
+                    </div>
+                  </li>
+                );
+              })}
+            </ol>
+          </div>
         </div>
       </section>
 
