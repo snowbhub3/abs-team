@@ -171,45 +171,49 @@ export default function Index() {
       </section>
 
       {/* Projects */}
-      <section id="projects" className="relative min-h-screen flex flex-col justify-center py-20 lg:py-32">
+      <section id="projects" className="relative min-h-screen flex flex-col pt-20 lg:pt-32 pb-12 lg:pb-20">
         <div className="container">
-          <div className="mb-8 lg:mb-12 flex items-center justify-between">
-            <h2 className="text-3xl lg:text-5xl font-bold">{t("section_projects_title")}</h2>
-            <a href="#contact" className="text-sm rounded-md border border-white/10 bg-white/5 px-3 py-1.5 hover:bg-white/10">
-              {t("start_similar")}
-            </a>
-          </div>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              { name: "Template Williams", href: "https://www.template-williams.de.rs/", img: "https://image.thum.io/get/width/1200/https://www.template-williams.de.rs/" },
-              { name: "Template Creation", href: "https://www.template-creation.de.rs/", img: "https://image.thum.io/get/width/1200/https://www.template-creation.de.rs/" },
-              { name: "Template Transportable", href: "https://www.template-transportable.de.rs/", img: "https://image.thum.io/get/width/1200/https://www.template-transportable.de.rs/" },
-              { name: "Isabella Harris", href: "https://www.isabellaharris.org/", img: "https://image.thum.io/get/width/1200/https://www.isabellaharris.org/" },
-              { name: "Template Benson", href: "https://www.template-benson.de.rs/", img: "https://image.thum.io/get/width/1200/https://www.template-benson.de.rs/" },
-              { name: "Gotham", href: "https://gotham.com.ua/", img: "https://image.thum.io/get/width/1200/https://gotham.com.ua/" },
-            ].map((item, i) => (
-              <a
-                key={item.name}
-                href={item.href}
-                target="_blank"
-                rel="noopener"
-                data-reveal
-                style={{ transitionDelay: `${i * 80}ms` }}
-                className="project-card group relative overflow-hidden rounded-xl border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/[0.035] transition-all duration-700 ease-out opacity-0 translate-y-4 active:scale-[0.985] data-[inview=true]:opacity-100 data-[inview=true]:translate-y-0"
-              >
-                <div className="aspect-[16/10] w-full overflow-hidden">
-                  <img src={item.img} alt={item.name} className="h-full w-full object-cover group-hover:scale-[1.03] transition-transform"/>
-                </div>
-                <div className="p-4">
-                  <div className="flex items-center justify-between">
-                    <p className="font-semibold">{item.name}</p>
-                    <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:translate-x-1 transition-transform" />
-                  </div>
-                  <p className="text-xs text-muted-foreground mt-1">Landing • SEO • Animations</p>
-                </div>
-                <div className="absolute right-[-20%] top-[-20%] h-40 w-40 rounded-full bg-sky-500/10 blur-2xl" />
+          <div className="mb-12 lg:mb-20">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6">
+              <h2 className="text-3xl lg:text-5xl font-bold">{t("section_projects_title")}</h2>
+              <a href="#contact" className="text-xs sm:text-sm rounded-md border border-white/10 bg-white/5 px-3 py-1.5 hover:bg-white/10 whitespace-nowrap">
+                {t("start_similar")}
               </a>
-            ))}
+            </div>
+          </div>
+          <div className="flex-1 flex items-center">
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 w-full">
+              {[
+                { name: "Template Williams", href: "https://www.template-williams.de.rs/", img: "https://image.thum.io/get/width/1200/https://www.template-williams.de.rs/" },
+                { name: "Template Creation", href: "https://www.template-creation.de.rs/", img: "https://image.thum.io/get/width/1200/https://www.template-creation.de.rs/" },
+                { name: "Template Transportable", href: "https://www.template-transportable.de.rs/", img: "https://image.thum.io/get/width/1200/https://www.template-transportable.de.rs/" },
+                { name: "Isabella Harris", href: "https://www.isabellaharris.org/", img: "https://image.thum.io/get/width/1200/https://www.isabellaharris.org/" },
+                { name: "Template Benson", href: "https://www.template-benson.de.rs/", img: "https://image.thum.io/get/width/1200/https://www.template-benson.de.rs/" },
+                { name: "Gotham", href: "https://gotham.com.ua/", img: "https://image.thum.io/get/width/1200/https://gotham.com.ua/" },
+              ].map((item, i) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener"
+                  data-reveal
+                  style={{ transitionDelay: `${i * 80}ms` }}
+                  className="project-card group relative overflow-hidden rounded-xl border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/[0.035] transition-all duration-700 ease-out opacity-0 translate-y-4 active:scale-[0.985] data-[inview=true]:opacity-100 data-[inview=true]:translate-y-0"
+                >
+                  <div className="aspect-[16/10] w-full overflow-hidden">
+                    <img src={item.img} alt={item.name} className="h-full w-full object-cover group-hover:scale-[1.03] transition-transform"/>
+                  </div>
+                  <div className="p-4">
+                    <div className="flex items-center justify-between">
+                      <p className="font-semibold">{item.name}</p>
+                      <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:translate-x-1 transition-transform" />
+                    </div>
+                    <p className="text-xs text-muted-foreground mt-1">Landing • SEO • Animations</p>
+                  </div>
+                  <div className="absolute right-[-20%] top-[-20%] h-40 w-40 rounded-full bg-sky-500/10 blur-2xl" />
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </section>
