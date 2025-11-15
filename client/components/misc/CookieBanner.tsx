@@ -48,7 +48,7 @@ export default function CookieBanner() {
 
   if (!show) return null;
 
-  const content = (
+  return createPortal(
     <div
       className={`fixed inset-x-0 bottom-0 z-[9999] px-2 sm:px-4 md:px-6 py-3 sm:py-4 md:py-6 pointer-events-auto ${
         isClosing
