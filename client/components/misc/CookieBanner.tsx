@@ -1,4 +1,5 @@
 import React from "react";
+import { createPortal } from "react-dom";
 import { Button } from "@/components/ui/button";
 import { useI18n } from "@/components/layout/Language";
 import { X, Cookie } from "lucide-react";
