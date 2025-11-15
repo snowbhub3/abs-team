@@ -87,15 +87,15 @@ export default function Index() {
               { id: "service-2", icon: <LineChart className="h-6 w-6" />, text: t("s3") },
               { id: "service-3", icon: <Shield className="h-6 w-6" />, text: t("s4") },
             ].map((item, i) => {
-              const isFlipped = flippedCards.has(item.id);
+              const flipCount = flippedCards[item.id] ?? 0;
               return (
                 <Card
                   key={item.id}
                   onClick={() => toggleFlip(item.id)}
                   data-reveal
                   style={{ transitionDelay: `${i * 80}ms` }}
-                  className={`flip-card group relative overflow-hidden border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/[0.03] p-6 h-56 lg:h-72 hover:bg-black/10 dark:hover:bg-white/[0.06] cursor-pointer opacity-0 translate-y-4 data-[inview=true]:opacity-100 data-[inview=true]:translate-y-0 data-[inview=true]:transition-all data-[inview=true]:duration-700 ${
-                    isFlipped ? "flipped" : ""
+                  className={`group relative overflow-hidden border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/[0.03] p-6 h-56 lg:h-72 hover:bg-black/10 dark:hover:bg-white/[0.06] cursor-pointer opacity-0 translate-y-4 data-[inview=true]:opacity-100 data-[inview=true]:translate-y-0 data-[inview=true]:transition-all data-[inview=true]:duration-700 ${
+                    flipCount > 0 ? "flip-card flipped" : "flip-card"
                   }`}
                 >
                   <div className="flip-card-content flex flex-col h-full justify-center items-center text-center">
