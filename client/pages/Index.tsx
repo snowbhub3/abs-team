@@ -133,7 +133,7 @@ export default function Index() {
           <ol className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[1, 2, 3, 4].map((n, i) => {
               const cardId = `process-${n}`;
-              const isFlipped = flippedCards.has(cardId);
+              const isAnimating = flippedCards.has(cardId);
               return (
                 <li
                   key={n}
@@ -141,7 +141,7 @@ export default function Index() {
                   data-reveal
                   style={{ transitionDelay: `${i * 90}ms` }}
                   className={`flip-card relative flex flex-col rounded-xl border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/[0.03] p-6 h-56 lg:h-72 hover:border-cyan-500/30 hover:bg-black/8 dark:hover:bg-white/[0.05] cursor-pointer opacity-0 translate-y-4 data-[inview=true]:opacity-100 data-[inview=true]:translate-y-0 data-[inview=true]:transition-all data-[inview=true]:duration-700 ${
-                    isFlipped ? "flipped" : ""
+                    isAnimating ? "flipped" : ""
                   }`}
                 >
                   <span className="pointer-events-none select-none absolute right-4 top-4 text-4xl font-black text-black/10 dark:text-white/10">
