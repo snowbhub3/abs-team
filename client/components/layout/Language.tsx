@@ -2,7 +2,7 @@ import React, { createContext, useCallback, useContext, useEffect, useMemo, useS
 
 type Locale = "en" | "ru";
 
-type Dict = Record<string, string | Dict>;
+type Dict = Record<string, any>;
 
 type Theme = "light" | "dark";
 
