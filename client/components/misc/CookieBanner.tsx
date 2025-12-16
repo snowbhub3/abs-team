@@ -50,13 +50,18 @@ export default function CookieBanner() {
 
   return createPortal(
     <div
-      className={`fixed inset-x-0 bottom-0 z-[9999] px-2 sm:px-4 md:px-6 py-3 sm:py-4 md:py-6 pointer-events-auto ${
+      className={`fixed inset-0 z-[9999] flex items-center justify-center px-2 sm:px-4 md:px-6 py-3 sm:py-4 md:py-6 pointer-events-auto ${
         isClosing
-          ? "opacity-0 translate-y-full transition-all duration-300"
+          ? "opacity-0 transition-all duration-300"
           : "cookie-banner-enter"
       }`}
+      style={{
+        backgroundColor: isClosing ? "transparent" : "rgba(0, 0, 0, 0.3)",
+        backdropFilter: isClosing ? "none" : "blur(2px)",
+        transition: "background-color 300ms, backdrop-filter 300ms",
+      }}
     >
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-2xl w-full">
         <div className="group relative overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 dark:border-white/15 bg-gradient-to-br from-white/95 via-white/90 to-white/80 dark:from-slate-900/95 dark:via-slate-900/90 dark:to-black/90 backdrop-blur-xl shadow-2xl">
           
           {/* Анімований градієнт фон */}
