@@ -134,7 +134,7 @@ export default function Index() {
       <section id="process" className="relative min-h-screen flex flex-col py-16 sm:py-20 lg:py-32 bg-white/[0.02]">
         <div className="container">
           <div className="mb-12 lg:mb-20">
-            <h2 className="text-3xl lg:text-5xl font-bold mb-3">{t("section_process_title")}</h2>
+            <h2 className="text-3xl lg:text-5xl font-bold mb-3 lg:mb-4">{t("section_process_title")}</h2>
           </div>
           <div className="flex-1 flex items-center">
             <ol className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 w-full">
@@ -220,10 +220,10 @@ export default function Index() {
 
       {/* Contact */}
       <section id="contact" className="relative min-h-screen flex flex-col justify-center py-16 sm:py-20 lg:py-32 bg-white/[0.02]">
-        <div className="container grid gap-8 md:grid-cols-2 items-center">
+        <div className="container grid gap-12 md:grid-cols-2 items-center">
           <div>
-            <h2 className="text-3xl font-bold mb-2">{t("contact_title")}</h2>
-            <p className="text-muted-foreground mb-6">{t("contact_sub")}</p>
+            <h2 className="text-3xl lg:text-5xl font-bold mb-3 lg:mb-4">{t("contact_title")}</h2>
+            <p className="text-muted-foreground text-base lg:text-lg mb-6 lg:mb-8">{t("contact_sub")}</p>
             <ul className="text-sm text-muted-foreground space-y-2">
               <li className="flex items-center gap-2"><Mail className="h-4 w-4"/> @abs_devteam</li>
             </ul>
