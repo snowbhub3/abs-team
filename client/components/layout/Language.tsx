@@ -133,8 +133,12 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const toggleTheme = useCallback(() => {
-    setThemeState((prev) => (prev === "dark" ? "light" : "dark"));
-    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+    setThemeState((prev) => {
+      const newTheme = prev === "dark" ? "light" : "dark";
+      try { localStorage.setItem("theme", newTheme); } catch {}
+      try { document.cookie = `theme=${newTheme}; path=/; max-age=${60*60*24*365}`; } catch {}
+      return newTheme;
+    });
   }, []);
 
   const t = useCallback((key: string) => {
