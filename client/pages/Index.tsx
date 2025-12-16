@@ -228,10 +228,10 @@ export default function Index() {
               <li className="flex items-center gap-2"><Mail className="h-4 w-4"/> @abs_devteam</li>
             </ul>
           </div>
-          <form onSubmit={send} className="rounded-xl border border-black/10 dark:border-white/10 bg-white/60 dark:bg-white/[0.035] p-6 backdrop-blur-sm">
-            <div className="grid gap-4">
-              <Textarea ref={msgRef} placeholder={t("form_message")} rows={5} className="bg-white/40 dark:bg-white/[0.03] backdrop-blur-sm border border-black/10 dark:border-white/10 focus:ring-2 focus:ring-sky-400/40 focus:border-sky-400/50 placeholder:text-foreground/60 rounded-lg" />
-              <Button type="submit" className="bg-sky-500 hover:bg-sky-400 text-white">{t("form_send")}</Button>
+          <form onSubmit={send} className="rounded-xl border border-black/10 dark:border-white/10 bg-white/60 dark:bg-white/[0.035] p-6 md:p-8 backdrop-blur-sm">
+            <div className="grid gap-5">
+              <Textarea ref={msgRef} placeholder={t("form_message")} rows={6} className="bg-white/40 dark:bg-white/[0.03] backdrop-blur-sm border border-black/10 dark:border-white/10 focus:ring-2 focus:ring-sky-400/40 focus:border-sky-400/50 placeholder:text-foreground/60 rounded-lg resize-none" />
+              <Button type="submit" className="bg-sky-500 hover:bg-sky-400 text-white h-11">{t("form_send")}</Button>
             </div>
           </form>
         </div>
