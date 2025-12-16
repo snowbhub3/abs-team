@@ -27,7 +27,7 @@ export default function CookieBanner() {
   const acceptLabel = locale === "ru" ? "Принять" : "Accept";
 
   const accept = () => {
-    // Встан��влюємо кукі на 1 рік
+    // Встанавлюємо кукі на 1 рік
     try {
       document.cookie = `consent=1; path=/; max-age=${60*60*24*365}`;
     } catch {}
@@ -85,7 +85,7 @@ export default function CookieBanner() {
                 
                 <div className="flex-1 min-w-0">
                   <h3 className="text-sm sm:text-base font-semibold text-foreground mb-1">
-                    {locale === "ru" ? "Испол��зование cookies" : "Cookie Policy"}
+                    {locale === "ru" ? "Использование cookies" : "Cookie Policy"}
                   </h3>
                   <p className="text-xs sm:text-sm text-foreground/75 dark:text-foreground/70 leading-relaxed">
                     {text}
