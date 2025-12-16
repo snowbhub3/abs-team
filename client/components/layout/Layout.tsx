@@ -4,8 +4,11 @@ import SiteHeader from "./SiteHeader";
 import SiteFooter from "./SiteFooter";
 import WebNetwork from "@/components/effects/WebNetwork";
 import CookieBanner from "@/components/misc/CookieBanner";
+import { useSEOMetaTags } from "@/hooks/use-seo-meta";
 
 export default function Layout() {
+  useSEOMetaTags();
+
   return (
     <>
       <div className="relative min-h-screen bg-background text-foreground">
