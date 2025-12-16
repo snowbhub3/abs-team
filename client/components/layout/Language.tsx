@@ -133,8 +133,9 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const toggleTheme = useCallback(() => {
+    setThemeState((prev) => (prev === "dark" ? "light" : "dark"));
     setTheme((prev) => (prev === "dark" ? "light" : "dark"));
-  }, [setTheme]);
+  }, []);
 
   const t = useCallback((key: string) => {
     const dict = DICT[locale];
