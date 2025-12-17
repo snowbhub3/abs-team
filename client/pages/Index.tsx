@@ -58,7 +58,7 @@ export default function Index() {
   return (
     <div id="home" className="relative">
       {/* Hero */}
-      <section className="relative min-h-screen flex flex-col justify-center py-20 sm:py-28 md:py-40">
+      <section className="relative min-h-screen flex flex-col justify-center py-12 sm:py-16 md:py-24">
         <div className="absolute inset-0 -z-10">
           <div className="absolute inset-0 dark:bg-[linear-gradient(180deg,rgba(2,6,23,0.7),transparent_40%),radial-gradient(600px_200px_at_50%_0px,rgba(56,189,248,0.25),transparent)] bg-[radial-gradient(800px_300px_at_50%_0px,rgba(14,165,233,0.10),transparent)]" />
         </div>
@@ -219,7 +219,7 @@ export default function Index() {
       </section>
 
       {/* Contact */}
-      <section id="contact" className="relative min-h-screen flex flex-col justify-center py-16 sm:py-20 lg:py-32 bg-white/[0.02]">
+      <section id="contact" className="relative min-h-screen flex flex-col justify-center py-12 sm:py-16 lg:py-24 bg-white/[0.02]">
         <div className="container grid gap-12 md:grid-cols-2 items-center">
           <div>
             <h2 className="text-3xl lg:text-5xl font-bold mb-3 lg:mb-4">{t("contact_title")}</h2>
