@@ -147,11 +147,11 @@ export default function Index() {
                     onClick={() => toggleFlip(cardId)}
                     data-reveal
                     style={{ transitionDelay: `${i * 90}ms` }}
-                    className={`flip-card relative flex flex-col rounded-xl border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/[0.03] p-6 min-h-72 sm:min-h-80 lg:min-h-96 hover:border-cyan-500/30 hover:bg-black/8 dark:hover:bg-white/[0.05] cursor-pointer opacity-0 translate-y-4 data-[inview=true]:opacity-100 data-[inview=true]:translate-y-0 data-[inview=true]:transition-all data-[inview=true]:duration-700 ${
+                    className={`flip-card relative flex flex-col rounded-xl border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/[0.03] p-6 h-64 sm:h-72 lg:h-80 hover:border-cyan-500/30 hover:bg-black/8 dark:hover:bg-white/[0.05] cursor-pointer opacity-0 translate-y-4 data-[inview=true]:opacity-100 data-[inview=true]:translate-y-0 data-[inview=true]:transition-all data-[inview=true]:duration-700 ${
                       isAnimating ? "flipped" : ""
                     }`}
                   >
-                    <span className="pointer-events-none select-none absolute top-4 right-4 sm:top-6 sm:right-6 text-5xl sm:text-6xl lg:text-7xl font-black text-black/10 dark:text-white/10 leading-none">
+                    <span className="pointer-events-none select-none absolute bottom-4 right-4 sm:bottom-6 sm:right-6 text-6xl sm:text-6xl lg:text-7xl font-black text-black/10 dark:text-white/10 leading-none">
                       {String(n).padStart(2, "0")}
                     </span>
                     <div className="flex flex-col h-full">
