@@ -151,10 +151,10 @@ export default function Index() {
                       isAnimating ? "flipped" : ""
                     }`}
                   >
+                    <span className="pointer-events-none select-none absolute top-6 right-6 text-6xl lg:text-7xl font-black text-black/10 dark:text-white/10 leading-none">
+                      {String(n).padStart(2, "0")}
+                    </span>
                     <div className="flex flex-col h-full">
-                      <span className="pointer-events-none select-none text-6xl lg:text-7xl font-black text-black/10 dark:text-white/10 leading-none mb-2 lg:mb-3">
-                        {String(n).padStart(2, "0")}
-                      </span>
                       <h3 className="text-base lg:text-lg font-semibold relative z-10 mb-2 lg:mb-3">
                         {t(`process_${n}_title`)}
                       </h3>
