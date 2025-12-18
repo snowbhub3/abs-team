@@ -2,7 +2,7 @@ import React from "react";
 import { createPortal } from "react-dom";
 import { Button } from "@/components/ui/button";
 import { useI18n } from "@/components/layout/Language";
-import { X, Cookie } from "lucide-react";
+import { X, Cookie, Check } from "lucide-react";
 
 export default function CookieBanner() {
   const { locale } = useI18n();
@@ -20,8 +20,8 @@ export default function CookieBanner() {
   }, []);
 
   const text = locale === "ru"
-    ? "Мы используем cookies для улучшения работы сайта и анализа трафика."
-    : "We use cookies to improve your experience and analyze traffic.";
+    ? "Мы используем cookies для улучшения работы сайта, анализа трафика и сохранения ваших предпочтений (тема оформления, язык и другие настройки)."
+    : "We use cookies to improve your experience, analyze traffic, and remember your preferences such as theme, language, and other settings.";
 
   const rejectLabel = locale === "ru" ? "Отклонить" : "Reject";
   const acceptLabel = locale === "ru" ? "Принять" : "Accept";
