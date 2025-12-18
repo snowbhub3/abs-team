@@ -151,7 +151,7 @@ export default function Index() {
                       isAnimating ? "flipped" : ""
                     }`}
                   >
-                    <span className="pointer-events-none select-none absolute top-4 right-4 sm:bottom-6 sm:right-6 text-3xl sm:text-6xl lg:text-7xl font-black text-black/10 dark:text-white/10 leading-none">
+                    <span className="pointer-events-none select-none absolute top-4 right-4 sm:bottom-6 sm:right-6 text-3xl sm:text-3xl lg:text-3xl font-black text-black/10 dark:text-white/10 leading-none">
                       {String(n).padStart(2, "0")}
                     </span>
                     <div className="flex flex-col h-full">
