@@ -60,7 +60,7 @@ export default function CookieBanner() {
         backdropFilter: isClosing ? "none" : "blur(2px)",
         transition: "background-color 300ms, backdrop-filter 300ms",
         alignItems: window.innerWidth < 640 ? "flex-end" : "center",
-        paddingBottom: window.innerWidth < 640 ? "1rem" : "20vh",
+        paddingBottom: window.innerWidth < 640 ? "1rem" : "8vh",
       }}
     >
       <div className="mx-auto max-w-3xl w-full">
