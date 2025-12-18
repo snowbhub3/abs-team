@@ -50,7 +50,7 @@ export default function CookieBanner() {
 
   return createPortal(
     <div
-      className={`fixed inset-0 z-[9999] flex items-center justify-center px-2 sm:px-4 md:px-6 py-3 sm:py-4 md:py-6 pointer-events-auto ${
+      className={`fixed inset-0 z-[9999] flex items-end sm:items-center justify-center px-3 sm:px-4 md:px-6 py-4 sm:py-6 md:py-8 pointer-events-auto ${
         isClosing
           ? "opacity-0 transition-all duration-300"
           : "cookie-banner-enter"
@@ -59,76 +59,62 @@ export default function CookieBanner() {
         backgroundColor: isClosing ? "transparent" : "rgba(0, 0, 0, 0.3)",
         backdropFilter: isClosing ? "none" : "blur(2px)",
         transition: "background-color 300ms, backdrop-filter 300ms",
+        alignItems: window.innerWidth < 640 ? "flex-end" : "center",
+        paddingBottom: window.innerWidth < 640 ? "1rem" : "20vh",
       }}
     >
-      <div className="mx-auto max-w-2xl w-full">
+      <div className="mx-auto max-w-3xl w-full">
         <div className="group relative overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 dark:border-white/15 bg-gradient-to-br from-white/95 via-white/90 to-white/80 dark:from-slate-900/95 dark:via-slate-900/90 dark:to-black/90 backdrop-blur-xl shadow-2xl">
-          
+
           {/* Анімований градієнт фон */}
           <div className="absolute -inset-full top-0 h-1 bg-gradient-to-r from-transparent via-sky-400/50 to-transparent dark:via-sky-500/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-          
+
           {/* Світяча аура */}
           <div className="absolute -right-20 -top-20 w-40 h-40 bg-sky-500/10 rounded-full blur-3xl group-hover:opacity-75 opacity-50 transition-opacity duration-500" />
           <div className="absolute -left-20 bottom-0 w-32 h-32 bg-cyan-500/5 rounded-full blur-3xl" />
 
           {/* Основний контент */}
-          <div className="relative p-4 sm:p-5 md:p-6">
-            <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 md:gap-6 items-start sm:items-center justify-between">
-              
+          <div className="relative p-5 sm:p-6 md:p-8">
+            <div className="flex flex-col gap-4 sm:gap-6">
+
               {/* Іконка та текст */}
-              <div className="flex gap-3 sm:gap-4 flex-1 min-w-0">
-                <div className="flex-shrink-0 flex items-start justify-center pt-0.5">
-                  <div className="inline-flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-lg bg-gradient-to-br from-sky-100 to-cyan-100 dark:from-sky-500/20 dark:to-cyan-500/20">
-                    <Cookie className="h-5 w-5 sm:h-6 sm:w-6 text-sky-600 dark:text-sky-400" />
+              <div className="flex gap-4 sm:gap-5">
+                <div className="flex-shrink-0 flex items-start justify-center">
+                  <div className="inline-flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-lg bg-gradient-to-br from-sky-100 to-cyan-100 dark:from-sky-500/20 dark:to-cyan-500/20">
+                    <Cookie className="h-6 w-6 sm:h-7 sm:w-7 text-sky-600 dark:text-sky-400" />
                   </div>
                 </div>
-                
+
                 <div className="flex-1 min-w-0">
-                  <h3 className="text-sm sm:text-base font-semibold text-foreground mb-1">
+                  <h3 className="text-base sm:text-lg font-semibold text-foreground mb-2">
                     {locale === "ru" ? "Использование cookies" : "Cookie Policy"}
                   </h3>
-                  <p className="text-xs sm:text-sm text-foreground/75 dark:text-foreground/70 leading-relaxed">
+                  <p className="text-sm sm:text-base text-foreground/75 dark:text-foreground/70 leading-relaxed">
                     {text}
                   </p>
                 </div>
               </div>
 
-              {/* Кнопки дій - адаптивна сітка */}
-              <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0 w-full sm:w-auto justify-end">
+              {/* Кнопки дій - вертикальне розташування на мобілі, горизонтальне на десктопі */}
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-end pt-2">
                 <button
                   onClick={reject}
-                  className="inline-flex items-center justify-center px-3 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm rounded-lg font-medium transition-all duration-200 border border-foreground/15 dark:border-white/10 text-foreground/70 hover:text-foreground hover:bg-black/3 dark:hover:bg-white/5 hover:border-foreground/30 active:scale-95 whitespace-nowrap"
+                  className="inline-flex items-center justify-center px-5 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base rounded-lg font-medium transition-all duration-200 border border-foreground/15 dark:border-white/10 text-foreground/70 hover:text-foreground hover:bg-black/3 dark:hover:bg-white/5 hover:border-foreground/30 active:scale-95 order-2 sm:order-1"
                   aria-label={rejectLabel}
                 >
                   {rejectLabel}
                 </button>
-                
+
                 <button
                   onClick={accept}
-                  className="inline-flex items-center justify-center px-4 sm:px-6 md:px-8 py-2 sm:py-2.5 text-xs sm:text-sm rounded-lg font-semibold bg-gradient-to-r from-sky-500 via-sky-500 to-sky-600 hover:from-sky-400 hover:via-sky-400 hover:to-sky-500 text-white shadow-lg shadow-sky-500/30 hover:shadow-sky-500/50 transition-all duration-200 active:scale-95 hover:translate-y-px whitespace-nowrap"
+                  className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base rounded-lg font-semibold bg-gradient-to-r from-sky-500 via-sky-500 to-sky-600 hover:from-sky-400 hover:via-sky-400 hover:to-sky-500 text-white shadow-lg shadow-sky-500/30 hover:shadow-sky-500/50 transition-all duration-200 active:scale-95 hover:translate-y-px order-1 sm:order-2"
                   aria-label={acceptLabel}
                 >
+                  <Check className="h-4 w-4 sm:h-5 sm:w-5" />
                   {acceptLabel}
-                </button>
-                
-                <button
-                  onClick={reject}
-                  className="hidden sm:inline-flex p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg transition-all duration-200 flex-shrink-0"
-                  aria-label="Закрити"
-                >
-                  <X className="h-4 w-4 text-foreground/60 hover:text-foreground/80" />
                 </button>
               </div>
             </div>
-
-            {/* Мобільне розташування кнопки закриття */}
-            <button
-              onClick={reject}
-              className="sm:hidden absolute top-3 right-3 p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg transition-all duration-200"
-              aria-label="Закрити"
-            >
-              <X className="h-4 w-4 text-foreground/60" />
-            </button>
           </div>
         </div>
       </div>
