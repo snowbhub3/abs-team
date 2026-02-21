@@ -19,12 +19,34 @@ export default function CookieBanner() {
     }
   }, []);
 
-  const text = locale === "ru"
-    ? "Мы используем cookies для улучшения работы сайта, анализа трафика и сохранения ваших предпочтений (тема оформления, язык и другие настройки)."
-    : "We use cookies to improve your experience, analyze traffic, and remember your preferences such as theme, language, and other settings.";
+  const cookieTexts: Record<"de" | "en" | "ru", string> = {
+    de: "Wir verwenden Cookies zur Verbesserung der Website-Funktion, zur Analyse des Datenverkehrs und zur Speicherung Ihrer Voreinstellungen (Design-Thema, Sprache und andere Einstellungen). Diese werden für Google Analytics und funktionale Zwecke verwendet.",
+    en: "We use cookies to improve your experience, analyze traffic, and remember your preferences such as theme, language, and other settings. These are used for Google Analytics and functional purposes.",
+    ru: "Мы используем cookies для улучшения работы сайта, анализа трафика и сохранения ваших предпочтений (тема оформления, язык и другие настройки). Они используются для Google Analytics и функциональных целей.",
+  };
 
-  const rejectLabel = locale === "ru" ? "Отклонить" : "Reject";
-  const acceptLabel = locale === "ru" ? "Принять" : "Accept";
+  const cookieTitles: Record<"de" | "en" | "ru", string> = {
+    de: "Cookie-Richtlinie",
+    en: "Cookie Policy",
+    ru: "Политика использования cookies",
+  };
+
+  const rejectLabels: Record<"de" | "en" | "ru", string> = {
+    de: "Ablehnen",
+    en: "Reject",
+    ru: "Отклонить",
+  };
+
+  const acceptLabels: Record<"de" | "en" | "ru", string> = {
+    de: "Akzeptieren",
+    en: "Accept",
+    ru: "Принять",
+  };
+
+  const text = cookieTexts[locale];
+  const cookieTitle = cookieTitles[locale];
+  const rejectLabel = rejectLabels[locale];
+  const acceptLabel = acceptLabels[locale];
 
   const accept = () => {
     // Встанавлюємо кукі на 1 рік
@@ -87,7 +109,7 @@ export default function CookieBanner() {
 
                 <div className="flex-1 min-w-0">
                   <h3 className="text-base sm:text-lg font-semibold text-foreground mb-2">
-                    {locale === "ru" ? "Использование cookies" : "Cookie Policy"}
+                    {cookieTitle}
                   </h3>
                   <p className="text-sm sm:text-base text-foreground/75 dark:text-foreground/70 leading-relaxed">
                     {text}

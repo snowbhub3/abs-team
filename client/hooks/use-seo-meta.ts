@@ -1,21 +1,24 @@
 import { useEffect } from "react";
 import { useI18n } from "@/components/layout/Language";
 
-type Locale = "en" | "ru";
+type Locale = "de" | "en" | "ru";
 
 const metaDescriptions: Record<Locale, string> = {
-  en: "abs team: Expert freelance developers creating fast, responsive websites and apps. Full-stack web development, UI/UX design, optimization, and SEO services.",
-  ru: "abs team: Команда фриланс-разработчиков создающая быстрые и адаптивные сайты и приложения. Полноценная веб-разработка, дизайн, оптимизация и поддержка.",
+  de: "ABS Studio: Digitale Agentur für moderne Landing Pages und Websites mit Abo-Modell. Schnelle, SEO-optimierte Websites mit professioneller Betreuung für Dortmund und Deutschland.",
+  en: "ABS Studio: Digital agency for modern landing pages and websites with subscription model. Fast, SEO-optimized websites with professional support across Germany.",
+  ru: "ABS Studio: Цифровое агентство для современных лендинг-страниц и веб-сайтов с моделью подписки. Быстрые, SEO-оптимизированные сайты с профессиональной поддержкой.",
 };
 
 const metaTitles: Record<Locale, string> = {
-  en: "abs team — Freelance Developers | Web Design & Development Services",
-  ru: "abs team — Фриланс разработчики | Веб-дизайн и разработка сайтов",
+  de: "ABS Studio — Digitale Agentur | Landing Pages und Website-Abo für Dortmund",
+  en: "ABS Studio — Digital Agency | Landing Pages and Website Subscription",
+  ru: "ABS Studio — Цифровое агентство | Лендинги и веб-сайты на подписке",
 };
 
 const metaKeywords: Record<Locale, string> = {
-  en: "web development, web design, freelance developers, responsive design, frontend development, backend development, optimization, SEO",
-  ru: "веб-разработка, веб-дизайн, фриланс разработчики, адаптивный дизайн, фронтенд разработка, бэкенд разработка, оптимизация, SEO",
+  de: "Landingpage erstellen lassen Dortmund, Website Betreuung Abo, Digitale Agentur, Website Design, Webentwicklung NRW, Landing Page Agentur, SEO Optimierung, Website Hosting",
+  en: "landing page creation, website subscription, digital agency, web design, web development, SEO optimization, website design, hosting",
+  ru: "лендинг-страницы, веб-сайты на подписке, цифровое агентство, веб-дизайн, веб-разработка, SEO оптимизация, хостинг",
 };
 
 export function useSEOMetaTags() {
@@ -49,47 +52,50 @@ export function useSEOMetaTags() {
     // Update og:title and og:description
     const ogTitle = document.querySelector('meta[property="og:title"]');
     if (ogTitle) {
-      ogTitle.setAttribute(
-        "content",
-        locale === "en"
-          ? "abs team — Freelance Web Development & Design Services"
-          : "abs team — Услуги фриланс веб-разработки и дизайна"
-      );
+      const ogTitles: Record<Locale, string> = {
+        de: "ABS Studio — Digitale Agentur für Landing Pages und Websites",
+        en: "ABS Studio — Digital Agency for Landing Pages and Websites",
+        ru: "ABS Studio — Цифровое агентство для лендинг-страниц и веб-сайтов",
+      };
+      ogTitle.setAttribute("content", ogTitles[locale]);
     }
 
     const ogDescription = document.querySelector('meta[property="og:description"]');
     if (ogDescription) {
-      ogDescription.setAttribute(
-        "content",
-        locale === "en"
-          ? "We build websites that grow your business. Full-stack development, design, optimization & support."
-          : "Мы создаём сайты, которые растят ваш бизнес. Полная разработка, дизайн, оптимизация и поддержка."
-      );
+      const ogDescs: Record<Locale, string> = {
+        de: "Moderne Landing Pages und Websites mit Abo-Modell. Schnell, SEO-optimiert und immer betreut. Jetzt kostenlosen Termin buchen!",
+        en: "Modern landing pages and websites with subscription model. Fast, SEO-optimized and always supported. Book a free consultation now!",
+        ru: "Современные лендинги и веб-сайты с моделью подписки. Быстрые, SEO-оптимизированные и всегда поддерживаемые. Забронируйте бесплатную консультацию!",
+      };
+      ogDescription.setAttribute("content", ogDescs[locale]);
     }
 
     // Update og:locale
     const ogLocale = document.querySelector('meta[property="og:locale"]');
     if (ogLocale) {
-      ogLocale.setAttribute("content", locale === "en" ? "en_US" : "ru_RU");
+      const localeMap: Record<Locale, string> = { de: "de_DE", en: "en_US", ru: "ru_RU" };
+      ogLocale.setAttribute("content", localeMap[locale]);
     }
 
     // Update twitter:title and description
     const twitterTitle = document.querySelector('meta[name="twitter:title"]');
     if (twitterTitle) {
-      twitterTitle.setAttribute(
-        "content",
-        locale === "en" ? "abs team — Freelance Web Development" : "abs team — Фриланс веб-разработка"
-      );
+      const twTitles: Record<Locale, string> = {
+        de: "ABS Studio — Digital Agency für Landing Pages",
+        en: "ABS Studio — Digital Agency for Landing Pages",
+        ru: "ABS Studio — Цифровое агентство для лендинг-страниц",
+      };
+      twitterTitle.setAttribute("content", twTitles[locale]);
     }
 
     const twitterDesc = document.querySelector('meta[name="twitter:description"]');
     if (twitterDesc) {
-      twitterDesc.setAttribute(
-        "content",
-        locale === "en"
-          ? "Expert web developers building fast, responsive websites and apps."
-          : "Эксперт-разработчики создают быстрые и адаптивные сайты и приложения."
-      );
+      const twDescs: Record<Locale, string> = {
+        de: "Websites auf Abo. Modern, schnell, SEO-optimiert. Jetzt informieren!",
+        en: "Websites on subscription. Modern, fast, SEO-optimized. Learn more!",
+        ru: "Веб-сайты на подписке. Современные, быстрые, SEO-оптимизированные. Узнайте больше!",
+      };
+      twitterDesc.setAttribute("content", twDescs[locale]);
     }
   }, [locale]);
 }

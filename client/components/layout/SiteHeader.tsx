@@ -48,8 +48,9 @@ export default function SiteHeader() {
             {theme === "dark" ? <ThemeIcon mode="dark"/> : <ThemeIcon mode="light"/>}
           </button>
           <div className="hidden sm:flex rounded-lg border border-black/10 dark:border-white/10 overflow-hidden">
-            <button onClick={() => setLocale("ru")} className={`px-2 py-1 text-xs ${locale === "ru" ? "bg-black/10 dark:bg-white/10" : "text-muted-foreground"}`}>RU</button>
+            <button onClick={() => setLocale("de")} className={`px-2 py-1 text-xs ${locale === "de" ? "bg-black/10 dark:bg-white/10" : "text-muted-foreground"}`}>DE</button>
             <button onClick={() => setLocale("en")} className={`px-2 py-1 text-xs ${locale === "en" ? "bg-black/10 dark:bg-white/10" : "text-muted-foreground"}`}>EN</button>
+            <button onClick={() => setLocale("ru")} className={`px-2 py-1 text-xs ${locale === "ru" ? "bg-black/10 dark:bg-white/10" : "text-muted-foreground"}`}>RU</button>
           </div>
           {/* Mobile-only menu */}
           <div className="sm:block md:hidden">
@@ -82,10 +83,11 @@ export default function SiteHeader() {
                 </a>
               ))}
               <div className="pt-4">
-                <div className="text-xs text-muted-foreground mb-2 flex items-center gap-2"><Languages className="h-4 w-4"/>Language</div>
-                <div className="flex rounded-lg border border-black/10 dark:border-white/10 overflow-hidden w-fit">
-                  <button onClick={() => setLocale("ru")} className={`px-3 py-1 text-sm ${locale === "ru" ? "bg-black/10 dark:bg-white/10" : "text-muted-foreground"}`}>RU</button>
+                <div className="text-xs text-muted-foreground mb-2 flex items-center gap-2"><Languages className="h-4 w-4"/>Sprache / Language</div>
+                <div className="flex rounded-lg border border-black/10 dark:border-white/10 overflow-hidden w-fit flex-wrap">
+                  <button onClick={() => setLocale("de")} className={`px-3 py-1 text-sm ${locale === "de" ? "bg-black/10 dark:bg-white/10" : "text-muted-foreground"}`}>DE</button>
                   <button onClick={() => setLocale("en")} className={`px-3 py-1 text-sm ${locale === "en" ? "bg-black/10 dark:bg-white/10" : "text-muted-foreground"}`}>EN</button>
+                  <button onClick={() => setLocale("ru")} className={`px-3 py-1 text-sm ${locale === "ru" ? "bg-black/10 dark:bg-white/10" : "text-muted-foreground"}`}>RU</button>
                 </div>
               </div>
             </div>
