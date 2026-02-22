@@ -4,11 +4,19 @@ export function LogoAbs({ size = 36 }: { size?: number }) {
   return (
     <div
       style={{ width: size, height: size }}
-      className="grid place-items-center rounded-xl bg-white text-black dark:bg-gradient-to-br dark:from-cyan-500 dark:to-sky-400 dark:text-white shadow-sm overflow-hidden"
-      aria-label="abs logo"
+      className="grid place-items-center rounded-lg bg-gradient-to-br from-sky-500 to-cyan-500 text-white shadow-lg shadow-sky-500/30 dark:shadow-sky-400/20 overflow-hidden font-bold"
+      aria-label="ABS Studio logo"
     >
-      <svg width={Math.round(size*0.9)} height={Math.round(size*0.9)} viewBox="0 0 100 64" fill="currentColor" aria-hidden>
-        <text x="50" y="50%" dominantBaseline="central" textAnchor="middle" fontFamily="Inter, ui-sans-serif" fontWeight={900} fontSize="44" letterSpacing="-2">abs</text>
+      <svg width={Math.round(size*0.75)} height={Math.round(size*0.75)} viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        {/* Modern geometric design */}
+        <rect x="12" y="12" width="96" height="96" rx="12" fill="currentColor" opacity="0.15" />
+
+        {/* Letter A - triangle */}
+        <path d="M 30 85 L 45 35 L 60 85" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+        <line x1="36" y1="65" x2="54" y2="65" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+
+        {/* Letter B - rounded rectangles */}
+        <path d="M 70 35 L 70 85 M 70 35 L 85 35 Q 90 35 90 42 Q 85 50 70 50 M 70 50 L 88 50 Q 95 50 95 60 Q 95 70 88 70 L 70 70" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none" />
       </svg>
     </div>
   );

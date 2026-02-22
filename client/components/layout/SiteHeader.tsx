@@ -11,6 +11,8 @@ const navItems = [
   { id: "services", href: "#services", k: "nav_services" },
   { id: "process", href: "#process", k: "nav_process" },
   { id: "projects", href: "#projects", k: "nav_projects" },
+  { id: "pricing", href: "/preise", k: "nav_pricing" },
+  { id: "campaigns", href: "/kampagnen", k: "nav_campaigns" },
   { id: "contact", href: "#contact", k: "nav_contact" },
 ] as const;
 
@@ -36,8 +38,11 @@ export default function SiteHeader() {
   return (
     <header ref={headerRef} className="fixed top-0 inset-x-0 z-40 backdrop-blur-md bg-white/70 dark:bg-black/30 border-b border-black/5 dark:border-white/10 pt-safe">
       <div className="mx-auto max-w-screen-2xl px-3 sm:px-6 flex h-16 items-center justify-between">
-        <a href="#home" onClick={(e)=>{e.preventDefault(); window.scrollTo({top:0, behavior:"smooth"});}} className="flex items-center gap-3">
+        <a href="#home" onClick={(e)=>{e.preventDefault(); window.scrollTo({top:0, behavior:"smooth"});}} className="flex items-center gap-2 sm:gap-3">
           <LogoAbs size={40} />
+          <span className="hidden sm:block text-lg font-bold bg-gradient-to-r from-sky-400 to-cyan-400 bg-clip-text text-transparent">
+            ABS Studio
+          </span>
         </a>
 
         {/* Desktop nav hidden by request */}
