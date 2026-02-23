@@ -1,4 +1,12 @@
+import { useEffect } from "react";
+
 export default function Datenschutz() {
+  useEffect(() => {
+    document.title = "Datenschutzerklärung | ABS Studio";
+    const descTag = document.querySelector('meta[name="description"]');
+    if (descTag) descTag.setAttribute("content", "Datenschutzerklärung von ABS Studio - DSGVO konform. Informationen zur Datenverarbeitung und Ihren Rechten.");
+  }, []);
+
   return (
     <div id="datenschutz" className="relative">
       <section className="relative py-16 sm:py-20 lg:py-32">

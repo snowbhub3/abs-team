@@ -1,10 +1,79 @@
+import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useI18n } from "@/components/layout/Language";
 import { Check, ArrowRight } from "lucide-react";
 
 export default function Preise() {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
+
+  // SEO Meta Tags
+  useEffect(() => {
+    const titles: Record<string, string> = {
+      de: "Preise | ABS Studio — Website Abo Kosten",
+      en: "Pricing | ABS Studio — Website Subscription Costs",
+      ru: "Цены | ABS Studio — Стоимость веб-сайта на подписке",
+    };
+    const descriptions: Record<string, string> = {
+      de: "Transparente Preisgestaltung für Website-Abos. Starter (€60), Plus (€100), Pro (€200) pro Monat. Kündigung jederzeit möglich.",
+      en: "Transparent pricing for website subscriptions. Starter (€60), Plus (€100), Pro (€200) per month. Cancel anytime.",
+      ru: "Прозрачные цены для веб-сайтов на подписке. Starter (€60), Plus (€100), Pro (€200) в месяц. Отмена в любой момент.",
+    };
+
+    document.title = titles[locale];
+    const descTag = document.querySelector('meta[name="description"]');
+    if (descTag) descTag.setAttribute("content", descriptions[locale]);
+
+    // Schema.org Pricing Schema
+    const schemaData = {
+      "@context": "https://schema.org",
+      "@type": "PriceSpecification",
+      "priceCurrency": "EUR",
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Starter Paket",
+          "price": "60",
+          "priceCurrency": "EUR",
+          "priceValidUntil": "2025-12-31",
+          "availability": "InStock",
+        },
+        {
+          "@type": "Offer",
+          "name": "Plus Paket",
+          "price": "100",
+          "priceCurrency": "EUR",
+          "priceValidUntil": "2025-12-31",
+          "availability": "InStock",
+        },
+        {
+          "@type": "Offer",
+          "name": "Pro Paket",
+          "price": "200",
+          "priceCurrency": "EUR",
+          "priceValidUntil": "2025-12-31",
+          "availability": "InStock",
+        },
+      ],
+    };
+
+    let schemaScript = document.querySelector('script[data-schema="pricing"]') as HTMLScriptElement | null;
+    if (!schemaScript) {
+      schemaScript = document.createElement("script");
+      schemaScript.type = "application/ld+json";
+      schemaScript.setAttribute("data-schema", "pricing");
+      schemaScript.textContent = JSON.stringify(schemaData);
+      document.head.appendChild(schemaScript);
+    } else {
+      schemaScript.textContent = JSON.stringify(schemaData);
+    }
+
+    return () => {
+      if (schemaScript && schemaScript.parentNode) {
+        schemaScript.parentNode.removeChild(schemaScript);
+      }
+    };
+  }, [locale]);
 
   const plans = [
     {

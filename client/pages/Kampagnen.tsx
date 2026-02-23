@@ -1,10 +1,29 @@
+import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useI18n } from "@/components/layout/Language";
 import { ArrowRight, Zap, Target, TrendingUp } from "lucide-react";
 
 export default function Kampagnen() {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
+
+  // SEO Meta Tags
+  useEffect(() => {
+    const titles: Record<string, string> = {
+      de: "Werbekampagnen | ABS Studio — Google & Meta Ads",
+      en: "Advertising Campaigns | ABS Studio — Google & Meta Ads",
+      ru: "Рекламные кампании | ABS Studio — Google и Meta объявления",
+    };
+    const descriptions: Record<string, string> = {
+      de: "Professionelle Werbekampagnen mit Google Ads, Meta Ads und Telegram. ROI-fokussiert mit A/B Testing und detailliertem Tracking.",
+      en: "Professional advertising campaigns with Google Ads, Meta Ads, and Telegram. ROI-focused with A/B testing and detailed tracking.",
+      ru: "Профессиональные рекламные кампании с Google Ads, Meta Ads и Telegram. Сосредоточены на ROI с A/B тестированием и отслеживанием.",
+    };
+
+    document.title = titles[locale];
+    const descTag = document.querySelector('meta[name="description"]');
+    if (descTag) descTag.setAttribute("content", descriptions[locale]);
+  }, [locale]);
 
   const campaigns = [
     {

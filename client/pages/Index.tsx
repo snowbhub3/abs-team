@@ -62,24 +62,24 @@ export default function Index() {
         <div className="absolute inset-0 -z-10">
           <div className="absolute inset-0 dark:bg-[linear-gradient(180deg,rgba(2,6,23,0.7),transparent_40%),radial-gradient(600px_200px_at_50%_0px,rgba(56,189,248,0.25),transparent)] bg-[radial-gradient(800px_300px_at_50%_0px,rgba(14,165,233,0.10),transparent)]" />
         </div>
-        <div className="container text-center max-w-4xl">
+        <div className="container text-center max-w-4xl px-4 sm:px-6">
           <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-foreground/80">
             <Sparkles className="h-3.5 w-3.5" /> {t("experience_badge")}
           </span>
-          <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight">
+          <h1 className="mt-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
             {t("hero_title")}
           </h1>
-          <p className="mt-4 text-lg text-muted-foreground">
+          <p className="mt-4 text-base sm:text-lg text-muted-foreground">
             {t("hero_sub")}
           </p>
-          <div className="mt-8 flex items-center justify-center gap-3">
-            <a href="#contact">
-              <Button className="h-10 px-4 text-sm sm:h-11 sm:px-6 sm:text-base bg-sky-500 hover:bg-sky-400 text-white shadow-lg shadow-sky-500/25">
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+            <a href="#contact" className="w-full sm:w-auto">
+              <Button className="w-full sm:w-auto h-10 px-4 text-sm sm:h-11 sm:px-6 sm:text-base bg-sky-500 hover:bg-sky-400 text-white shadow-lg shadow-sky-500/25">
                 {t("cta_primary")} <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </a>
-            <a href="#projects">
-              <Button variant="secondary" className="h-10 px-4 text-sm sm:h-11 sm:px-6 sm:text-base bg-white/5 hover:bg-white/10 border-white/10">
+            <a href="#projects" className="w-full sm:w-auto">
+              <Button variant="secondary" className="w-full sm:w-auto h-10 px-4 text-sm sm:h-11 sm:px-6 sm:text-base bg-white/5 hover:bg-white/10 border-white/10">
                 {t("cta_secondary")}
               </Button>
             </a>
@@ -88,11 +88,11 @@ export default function Index() {
       </section>
 
       {/* Services - What we do */}
-      <section id="services" className="relative min-h-screen flex flex-col py-16 sm:py-20 lg:py-32">
-        <div className="container">
-          <div className="mb-12 lg:mb-20">
-            <h2 className="text-3xl lg:text-5xl font-bold mb-3 lg:mb-4">{t("section_services_title")}</h2>
-            <p className="text-muted-foreground text-base lg:text-lg max-w-2xl">{t("section_services_sub")}</p>
+      <section id="services" className="relative py-12 sm:py-16 lg:py-32">
+        <div className="container px-4 sm:px-6">
+          <div className="mb-8 sm:mb-12 lg:mb-20">
+            <h2 className="text-2xl sm:text-3xl lg:text-5xl font-bold mb-3 lg:mb-4">{t("section_services_title")}</h2>
+            <p className="text-muted-foreground text-sm sm:text-base lg:text-lg max-w-2xl">{t("section_services_sub")}</p>
           </div>
           <div className="flex-1 flex items-center">
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 w-full">
@@ -131,10 +131,10 @@ export default function Index() {
       </section>
 
       {/* Process - How we work */}
-      <section id="process" className="relative min-h-screen flex flex-col py-16 sm:py-20 lg:py-32 bg-white/[0.02]">
-        <div className="container">
-          <div className="mb-12 lg:mb-20">
-            <h2 className="text-3xl lg:text-5xl font-bold mb-3 lg:mb-4">{t("section_process_title")}</h2>
+      <section id="process" className="relative py-12 sm:py-16 lg:py-32 bg-white/[0.02]">
+        <div className="container px-4 sm:px-6">
+          <div className="mb-8 sm:mb-12 lg:mb-20">
+            <h2 className="text-2xl sm:text-3xl lg:text-5xl font-bold mb-3 lg:mb-4">{t("section_process_title")}</h2>
           </div>
           <div className="flex-1 flex items-center">
             <ol className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 w-full">
@@ -171,11 +171,11 @@ export default function Index() {
       </section>
 
       {/* Projects */}
-      <section id="projects" className="relative min-h-screen flex flex-col py-16 sm:py-20 lg:py-32">
-        <div className="container">
-          <div className="mb-12 lg:mb-20">
+      <section id="projects" className="relative py-12 sm:py-16 lg:py-32">
+        <div className="container px-4 sm:px-6">
+          <div className="mb-8 sm:mb-12 lg:mb-20">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6">
-              <h2 className="text-3xl lg:text-5xl font-bold">{t("section_projects_title")}</h2>
+              <h2 className="text-2xl sm:text-3xl lg:text-5xl font-bold">{t("section_projects_title")}</h2>
               <a href="#contact" className="text-xs sm:text-sm rounded-md border border-white/10 bg-white/5 px-3 py-1.5 hover:bg-white/10 whitespace-nowrap">
                 {t("start_similar")}
               </a>
@@ -200,8 +200,14 @@ export default function Index() {
                   style={{ transitionDelay: `${i * 80}ms` }}
                   className="project-card group relative overflow-hidden rounded-xl border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/[0.035] transition-all duration-700 ease-out opacity-0 translate-y-4 active:scale-[0.985] data-[inview=true]:opacity-100 data-[inview=true]:translate-y-0"
                 >
-                  <div className="aspect-[16/10] w-full overflow-hidden">
-                    <img src={item.img} alt={item.name} className="h-full w-full object-cover group-hover:scale-[1.03] transition-transform"/>
+                  <div className="aspect-[16/10] w-full overflow-hidden bg-black/5">
+                    <img
+                      src={item.img}
+                      alt={item.name}
+                      loading="lazy"
+                      decoding="async"
+                      className="h-full w-full object-cover group-hover:scale-[1.03] transition-transform"
+                    />
                   </div>
                   <div className="p-4">
                     <div className="flex items-center justify-between">
@@ -219,21 +225,94 @@ export default function Index() {
       </section>
 
       {/* Contact */}
-      <section id="contact" className="relative min-h-screen flex flex-col justify-center py-12 sm:py-16 lg:py-24 bg-white/[0.02]">
-        <div className="container grid gap-12 md:grid-cols-2 items-center">
-          <div>
-            <h2 className="text-3xl lg:text-5xl font-bold mb-3 lg:mb-4">{t("contact_title")}</h2>
-            <p className="text-muted-foreground text-base lg:text-lg mb-6 lg:mb-8">{t("contact_sub")}</p>
-            <ul className="text-sm text-muted-foreground space-y-2">
-              <li className="flex items-center gap-2"><Mail className="h-4 w-4"/> @abs_devteam</li>
-            </ul>
-          </div>
-          <form onSubmit={send} className="rounded-xl border border-black/10 dark:border-white/10 bg-white/60 dark:bg-white/[0.035] p-6 md:p-8 backdrop-blur-sm">
-            <div className="grid gap-5">
-              <Textarea ref={msgRef} placeholder={t("form_message")} rows={6} className="bg-white/40 dark:bg-white/[0.03] backdrop-blur-sm border border-black/10 dark:border-white/10 focus:ring-2 focus:ring-sky-400/40 focus:border-sky-400/50 placeholder:text-foreground/60 rounded-lg resize-none" />
-              <Button type="submit" className="bg-sky-500 hover:bg-sky-400 text-white h-11">{t("form_send")}</Button>
+      <section id="contact" className="relative flex flex-col justify-center py-12 sm:py-16 lg:py-24 bg-white/[0.02]">
+        <div className="container px-4 sm:px-6">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+              <h2 className="text-2xl sm:text-4xl lg:text-6xl font-bold mb-3 sm:mb-4 lg:mb-6">{t("contact_title")}</h2>
+              <p className="text-sm sm:text-base lg:text-lg text-muted-foreground max-w-2xl mx-auto">{t("contact_sub")}</p>
             </div>
-          </form>
+
+            {/* Contact methods */}
+            <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 mb-12 lg:mb-16">
+              {/* Telegram */}
+              <a
+                href="https://t.me/abs_devteam"
+                target="_blank"
+                rel="noopener"
+                className="group relative overflow-hidden rounded-2xl border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/[0.03] p-8 hover:border-sky-500/30 hover:bg-black/8 dark:hover:bg-white/[0.05] transition-all duration-300 cursor-pointer"
+              >
+                <div className="absolute inset-0 -z-10 bg-gradient-to-br from-sky-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="flex flex-col items-center text-center">
+                  <div className="w-14 h-14 rounded-lg bg-sky-500/20 flex items-center justify-center mb-4 group-hover:bg-sky-500/30 transition-colors">
+                    <svg className="w-7 h-7 text-sky-400" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/>
+                    </svg>
+                  </div>
+                  <h3 className="font-semibold text-lg mb-1">Telegram</h3>
+                  <p className="text-sm text-muted-foreground">@abs_devteam</p>
+                  <p className="text-xs text-sky-400 mt-3">{t("contact_response_time")}</p>
+                </div>
+              </a>
+
+              {/* WhatsApp */}
+              <a
+                href="https://wa.me/yourphonenumber"
+                target="_blank"
+                rel="noopener"
+                className="group relative overflow-hidden rounded-2xl border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/[0.03] p-8 hover:border-green-500/30 hover:bg-black/8 dark:hover:bg-white/[0.05] transition-all duration-300 cursor-pointer"
+              >
+                <div className="absolute inset-0 -z-10 bg-gradient-to-br from-green-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="flex flex-col items-center text-center">
+                  <div className="w-14 h-14 rounded-lg bg-green-500/20 flex items-center justify-center mb-4 group-hover:bg-green-500/30 transition-colors">
+                    <svg className="w-7 h-7 text-green-400" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371 0-.57 0-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-4.934 1.239c-1.506.906-2.73 2.217-3.522 3.756-.852 1.712-1.247 3.581-.997 5.514.25 1.933 1.058 3.731 2.368 5.165 1.31 1.434 3.02 2.446 4.934 2.959 2.49.75 5.245.49 7.556-.801 1.4-.789 2.617-1.932 3.502-3.261.915-1.401 1.431-2.984 1.596-4.611.165-1.627-.052-3.304-.567-4.848-.534-1.628-1.479-3.074-2.768-4.204-1.289-1.13-2.915-1.944-4.656-2.407-.982-.253-1.994-.35-3.009-.282z"/>
+                    </svg>
+                  </div>
+                  <h3 className="font-semibold text-lg mb-1">WhatsApp</h3>
+                  <p className="text-sm text-muted-foreground">Business</p>
+                  <p className="text-xs text-green-400 mt-3">{t("contact_response_time")}</p>
+                </div>
+              </a>
+
+              {/* Email */}
+              <a
+                href="mailto:info@abs-dev.team"
+                className="group relative overflow-hidden rounded-2xl border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/[0.03] p-8 hover:border-cyan-500/30 hover:bg-black/8 dark:hover:bg-white/[0.05] transition-all duration-300 cursor-pointer"
+              >
+                <div className="absolute inset-0 -z-10 bg-gradient-to-br from-cyan-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="flex flex-col items-center text-center">
+                  <div className="w-14 h-14 rounded-lg bg-cyan-500/20 flex items-center justify-center mb-4 group-hover:bg-cyan-500/30 transition-colors">
+                    <Mail className="w-7 h-7 text-cyan-400" />
+                  </div>
+                  <h3 className="font-semibold text-lg mb-1">{t("contact_email")}</h3>
+                  <p className="text-sm text-muted-foreground break-all">info@abs-dev.team</p>
+                  <p className="text-xs text-cyan-400 mt-3">{t("contact_response_time")}</p>
+                </div>
+              </a>
+            </div>
+
+            {/* Message form */}
+            <div className="max-w-2xl mx-auto">
+              <form onSubmit={send} className="rounded-2xl border border-black/10 dark:border-white/10 bg-gradient-to-br from-white/70 via-white/50 to-white/30 dark:from-white/[0.08] dark:via-white/[0.05] dark:to-transparent backdrop-blur-xl p-8 shadow-xl">
+                <h3 className="text-xl font-bold mb-6">{t("contact_free_consultation")}</h3>
+                <div className="grid gap-5">
+                  <Textarea
+                    ref={msgRef}
+                    placeholder={t("form_message")}
+                    rows={5}
+                    className="bg-white/40 dark:bg-white/[0.03] backdrop-blur-sm border border-black/10 dark:border-white/10 focus:ring-2 focus:ring-sky-400/40 focus:border-sky-400/50 placeholder:text-foreground/60 rounded-lg resize-none"
+                  />
+                  <Button
+                    type="submit"
+                    className="bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 text-white h-12 font-semibold shadow-lg shadow-sky-500/30"
+                  >
+                    {t("form_send")} <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
       </section>
     </div>

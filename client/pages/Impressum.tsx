@@ -1,4 +1,15 @@
+import { useEffect } from "react";
+import { useI18n } from "@/components/layout/Language";
+
 export default function Impressum() {
+  const { locale } = useI18n();
+
+  useEffect(() => {
+    document.title = "Impressum | ABS Studio";
+    const descTag = document.querySelector('meta[name="description"]');
+    if (descTag) descTag.setAttribute("content", "Impressum und Kontaktdaten von ABS Studio, Einzelunternehmen, Berlin, Deutschland.");
+  }, []);
+
   return (
     <div id="impressum" className="relative">
       <section className="relative py-16 sm:py-20 lg:py-32">

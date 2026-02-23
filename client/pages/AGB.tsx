@@ -1,4 +1,12 @@
+import { useEffect } from "react";
+
 export default function AGB() {
+  useEffect(() => {
+    document.title = "AGB | ABS Studio — Allgemeine Geschäftsbedingungen";
+    const descTag = document.querySelector('meta[name="description"]');
+    if (descTag) descTag.setAttribute("content", "AGB und Vertragsbedingungen von ABS Studio für Website-Abos, Hosting und Support.");
+  }, []);
+
   return (
     <div id="agb" className="relative">
       <section className="relative py-16 sm:py-20 lg:py-32">
