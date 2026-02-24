@@ -11,11 +11,23 @@ export default function CookieBanner() {
 
   React.useEffect(() => {
     // Перевіряємо чи була прийнята згода на кукі
-    const consent = document.cookie.match(/(?:^|; )consent=1/);
+    const hasCookieConsent = () => {
+      // Спочатку перевіряємо sessionStorage (швидше)
+      const sessionConsent = sessionStorage.getItem('consent');
+      if (sessionConsent) {
+        return sessionConsent === '1';
+      }
+
+      // Потім перевіряємо постійні кукі
+      return document.cookie.split(';').some(cookie =>
+        cookie.trim().startsWith('consent=1')
+      );
+    };
+
     // Якщо кукі не прийняті - показуємо банер
-    if (!consent) {
+    if (!hasCookieConsent()) {
       // Невеликою затримкою для плавної появи
-      setTimeout(() => setShow(true), 500);
+      setTimeout(() => setShow(true), 300);
     }
   }, []);
 
@@ -51,7 +63,10 @@ export default function CookieBanner() {
   const accept = () => {
     // Встанавлюємо кукі на 1 рік
     try {
-      document.cookie = `consent=1; path=/; max-age=${60*60*24*365}`;
+      const oneYearInSeconds = 60 * 60 * 24 * 365;
+      document.cookie = `consent=1; path=/; max-age=${oneYearInSeconds}; SameSite=Strict`;
+      // Також зберігаємо в sessionStorage для швидшої перевірки
+      sessionStorage.setItem('consent', '1');
     } catch {}
 
     // Анімація виходу
@@ -62,6 +77,8 @@ export default function CookieBanner() {
   };
 
   const reject = () => {
+    // Зберігаємо, що користувач відхилив кукі (на сесію)
+    sessionStorage.setItem('consent', 'rejected');
     setIsClosing(true);
     setTimeout(() => {
       setShow(false);
