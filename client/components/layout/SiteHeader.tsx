@@ -11,7 +11,7 @@ const navItems = [
   { id: "services", href: "#services", k: "nav_services" },
   { id: "process", href: "#process", k: "nav_process" },
   { id: "projects", href: "#projects", k: "nav_projects" },
-  { id: "pricing", href: "/preise", k: "nav_pricing" },
+  { id: "pricing", href: "#preise", k: "nav_pricing" },
   { id: "campaigns", href: "/kampagnen", k: "nav_campaigns" },
   { id: "contact", href: "#contact", k: "nav_contact" },
 ] as const;
@@ -83,7 +83,14 @@ export default function SiteHeader() {
             <WebNetworkPanel />
             <div className="relative z-10 p-4 flex flex-col gap-3">
               {navItems.map((i) => (
-                <a key={i.id} href={i.href} onClick={() => setOpen(false)} className="rounded-md border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/5 px-3 py-2 text-base">
+                <a key={i.id} href={i.href} onClick={(e) => {
+                  setOpen(false);
+                  if (i.href.startsWith("#")) {
+                    e.preventDefault();
+                    const el = document.querySelector(i.href);
+                    el?.scrollIntoView({ behavior: "smooth", block: "start" });
+                  }
+                }} className="rounded-md border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/5 px-3 py-2 text-base">
                   {t(i.k)}
                 </a>
               ))}

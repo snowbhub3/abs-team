@@ -4,6 +4,8 @@ import SiteHeader from "./SiteHeader";
 import SiteFooter from "./SiteFooter";
 import WebNetwork from "@/components/effects/WebNetwork";
 import CookieBanner from "@/components/misc/CookieBanner";
+import { LegalModal } from "@/components/misc/LegalModal";
+import { useLegalModal } from "@/components/layout/LegalModalContext";
 import { useSEOMetaTags } from "@/hooks/use-seo-meta";
 
 function PageLoader() {
@@ -17,6 +19,7 @@ function PageLoader() {
 export default function Layout() {
   useSEOMetaTags();
   const location = useLocation();
+  const { currentModal, closeModal } = useLegalModal();
 
   // Scroll to top on page change
   React.useEffect(() => {
@@ -37,6 +40,10 @@ export default function Layout() {
       </div>
       {/* CookieBanner rendered at document root level */}
       <CookieBanner />
+      {/* Legal Modals */}
+      {currentModal && (
+        <LegalModal type={currentModal} open={true} onClose={closeModal} />
+      )}
     </>
   );
 }

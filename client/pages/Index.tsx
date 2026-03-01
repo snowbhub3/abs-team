@@ -5,6 +5,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { useI18n } from "@/components/layout/Language";
 import { ArrowRight, Sparkles, Rocket, LineChart, PenTool, Shield, Mail } from "lucide-react";
 import React, { useRef, useState, useEffect } from "react";
+import { PricingSection } from "@/components/sections/PricingSection";
 
 export default function Index() {
   const { t } = useI18n();
@@ -224,6 +225,9 @@ export default function Index() {
         </div>
       </section>
 
+      {/* Pricing */}
+      <PricingSection />
+
       {/* Contact */}
       <section id="contact" className="relative flex flex-col justify-center py-12 sm:py-16 lg:py-24 bg-white/[0.02]">
         <div className="container px-4 sm:px-6">
@@ -234,81 +238,89 @@ export default function Index() {
             </div>
 
             {/* Contact methods */}
-            <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 mb-12 lg:mb-16">
+            <div className="grid gap-6 sm:gap-6 md:grid-cols-3 mb-12 lg:mb-16">
               {/* Telegram */}
               <a
                 href="https://t.me/abs_devteam"
                 target="_blank"
                 rel="noopener"
-                className="group relative overflow-hidden rounded-2xl border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/[0.03] p-8 hover:border-sky-500/30 hover:bg-black/8 dark:hover:bg-white/[0.05] transition-all duration-300 cursor-pointer"
+                className="group relative overflow-hidden rounded-2xl border border-black/10 dark:border-white/10 bg-gradient-to-br from-white/50 to-white/30 dark:from-white/[0.08] dark:to-white/[0.02] backdrop-blur-sm p-6 sm:p-8 hover:border-sky-500/50 hover:from-white/70 dark:hover:from-white/[0.12] hover:shadow-lg hover:shadow-sky-500/10 transition-all duration-300 active:scale-95"
               >
-                <div className="absolute inset-0 -z-10 bg-gradient-to-br from-sky-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="flex flex-col items-center text-center">
-                  <div className="w-14 h-14 rounded-lg bg-sky-500/20 flex items-center justify-center mb-4 group-hover:bg-sky-500/30 transition-colors">
-                    <svg className="w-7 h-7 text-sky-400" fill="currentColor" viewBox="0 0 24 24">
+                <div className="absolute -right-16 -top-16 w-32 h-32 bg-sky-500/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="relative z-10 flex flex-col items-center text-center">
+                  <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-sky-500/30 to-sky-600/20 flex items-center justify-center mb-4 group-hover:from-sky-500/50 group-hover:to-sky-600/30 transition-colors shadow-lg shadow-sky-500/10">
+                    <svg className="w-8 h-8 text-sky-400" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/>
                     </svg>
                   </div>
-                  <h3 className="font-semibold text-lg mb-1">Telegram</h3>
-                  <p className="text-sm text-muted-foreground">@abs_devteam</p>
-                  <p className="text-xs text-sky-400 mt-3">{t("contact_response_time")}</p>
+                  <h3 className="font-bold text-base sm:text-lg mb-2">Telegram</h3>
+                  <p className="text-sm text-muted-foreground mb-3">@abs_devteam</p>
+                  <p className="text-xs font-medium text-sky-500/80 bg-sky-500/10 rounded-full px-3 py-1">{t("contact_response_time")}</p>
                 </div>
               </a>
 
               {/* WhatsApp */}
               <a
-                href="https://wa.me/yourphonenumber"
+                href="https://wa.me/49123456789"
                 target="_blank"
                 rel="noopener"
-                className="group relative overflow-hidden rounded-2xl border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/[0.03] p-8 hover:border-green-500/30 hover:bg-black/8 dark:hover:bg-white/[0.05] transition-all duration-300 cursor-pointer"
+                className="group relative overflow-hidden rounded-2xl border border-black/10 dark:border-white/10 bg-gradient-to-br from-white/50 to-white/30 dark:from-white/[0.08] dark:to-white/[0.02] backdrop-blur-sm p-6 sm:p-8 hover:border-green-500/50 hover:from-white/70 dark:hover:from-white/[0.12] hover:shadow-lg hover:shadow-green-500/10 transition-all duration-300 active:scale-95"
               >
-                <div className="absolute inset-0 -z-10 bg-gradient-to-br from-green-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="flex flex-col items-center text-center">
-                  <div className="w-14 h-14 rounded-lg bg-green-500/20 flex items-center justify-center mb-4 group-hover:bg-green-500/30 transition-colors">
-                    <svg className="w-7 h-7 text-green-400" fill="currentColor" viewBox="0 0 24 24">
+                <div className="absolute -right-16 -top-16 w-32 h-32 bg-green-500/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="relative z-10 flex flex-col items-center text-center">
+                  <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-green-500/30 to-green-600/20 flex items-center justify-center mb-4 group-hover:from-green-500/50 group-hover:to-green-600/30 transition-colors shadow-lg shadow-green-500/10">
+                    <svg className="w-8 h-8 text-green-400" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371 0-.57 0-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-4.934 1.239c-1.506.906-2.73 2.217-3.522 3.756-.852 1.712-1.247 3.581-.997 5.514.25 1.933 1.058 3.731 2.368 5.165 1.31 1.434 3.02 2.446 4.934 2.959 2.49.75 5.245.49 7.556-.801 1.4-.789 2.617-1.932 3.502-3.261.915-1.401 1.431-2.984 1.596-4.611.165-1.627-.052-3.304-.567-4.848-.534-1.628-1.479-3.074-2.768-4.204-1.289-1.13-2.915-1.944-4.656-2.407-.982-.253-1.994-.35-3.009-.282z"/>
                     </svg>
                   </div>
-                  <h3 className="font-semibold text-lg mb-1">WhatsApp</h3>
-                  <p className="text-sm text-muted-foreground">Business</p>
-                  <p className="text-xs text-green-400 mt-3">{t("contact_response_time")}</p>
+                  <h3 className="font-bold text-base sm:text-lg mb-2">WhatsApp</h3>
+                  <p className="text-sm text-muted-foreground mb-3">Business</p>
+                  <p className="text-xs font-medium text-green-500/80 bg-green-500/10 rounded-full px-3 py-1">{t("contact_response_time")}</p>
                 </div>
               </a>
 
               {/* Email */}
               <a
                 href="mailto:info@abs-dev.team"
-                className="group relative overflow-hidden rounded-2xl border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/[0.03] p-8 hover:border-cyan-500/30 hover:bg-black/8 dark:hover:bg-white/[0.05] transition-all duration-300 cursor-pointer"
+                className="group relative overflow-hidden rounded-2xl border border-black/10 dark:border-white/10 bg-gradient-to-br from-white/50 to-white/30 dark:from-white/[0.08] dark:to-white/[0.02] backdrop-blur-sm p-6 sm:p-8 hover:border-cyan-500/50 hover:from-white/70 dark:hover:from-white/[0.12] hover:shadow-lg hover:shadow-cyan-500/10 transition-all duration-300 active:scale-95"
               >
-                <div className="absolute inset-0 -z-10 bg-gradient-to-br from-cyan-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="flex flex-col items-center text-center">
-                  <div className="w-14 h-14 rounded-lg bg-cyan-500/20 flex items-center justify-center mb-4 group-hover:bg-cyan-500/30 transition-colors">
-                    <Mail className="w-7 h-7 text-cyan-400" />
+                <div className="absolute -right-16 -top-16 w-32 h-32 bg-cyan-500/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="relative z-10 flex flex-col items-center text-center">
+                  <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-cyan-500/30 to-cyan-600/20 flex items-center justify-center mb-4 group-hover:from-cyan-500/50 group-hover:to-cyan-600/30 transition-colors shadow-lg shadow-cyan-500/10">
+                    <Mail className="w-8 h-8 text-cyan-400" />
                   </div>
-                  <h3 className="font-semibold text-lg mb-1">{t("contact_email")}</h3>
-                  <p className="text-sm text-muted-foreground break-all">info@abs-dev.team</p>
-                  <p className="text-xs text-cyan-400 mt-3">{t("contact_response_time")}</p>
+                  <h3 className="font-bold text-base sm:text-lg mb-2">{t("contact_email")}</h3>
+                  <p className="text-sm text-muted-foreground mb-3 break-all">info@abs-dev.team</p>
+                  <p className="text-xs font-medium text-cyan-500/80 bg-cyan-500/10 rounded-full px-3 py-1">{t("contact_response_time")}</p>
                 </div>
               </a>
             </div>
 
             {/* Message form */}
-            <div className="max-w-2xl mx-auto">
-              <form onSubmit={send} className="rounded-2xl border border-black/10 dark:border-white/10 bg-gradient-to-br from-white/70 via-white/50 to-white/30 dark:from-white/[0.08] dark:via-white/[0.05] dark:to-transparent backdrop-blur-xl p-8 shadow-xl">
-                <h3 className="text-xl font-bold mb-6">{t("contact_free_consultation")}</h3>
-                <div className="grid gap-5">
-                  <Textarea
-                    ref={msgRef}
-                    placeholder={t("form_message")}
-                    rows={5}
-                    className="bg-white/40 dark:bg-white/[0.03] backdrop-blur-sm border border-black/10 dark:border-white/10 focus:ring-2 focus:ring-sky-400/40 focus:border-sky-400/50 placeholder:text-foreground/60 rounded-lg resize-none"
-                  />
-                  <Button
-                    type="submit"
-                    className="bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 text-white h-12 font-semibold shadow-lg shadow-sky-500/30"
-                  >
-                    {t("form_send")} <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
+            <div className="max-w-2xl mx-auto mt-8 sm:mt-12">
+              <form onSubmit={send} className="group relative overflow-hidden rounded-2xl border border-black/10 dark:border-white/10 bg-gradient-to-br from-white/80 via-white/60 to-white/40 dark:from-white/[0.1] dark:via-white/[0.06] dark:to-white/[0.02] backdrop-blur-xl p-6 sm:p-8 shadow-2xl hover:shadow-2xl hover:shadow-sky-500/10 transition-all duration-300">
+                {/* Decorative gradient */}
+                <div className="absolute -right-20 -top-20 w-40 h-40 bg-sky-500/20 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute -left-20 -bottom-20 w-40 h-40 bg-cyan-500/10 rounded-full blur-3xl" />
+
+                <div className="relative z-10">
+                  <h3 className="text-xl sm:text-2xl font-bold mb-2 text-foreground">{t("contact_free_consultation")}</h3>
+                  <p className="text-sm text-muted-foreground mb-6">Schreiben Sie Ihre Nachricht und wir melden uns innerhalb von 24 Stunden</p>
+
+                  <div className="grid gap-4">
+                    <Textarea
+                      ref={msgRef}
+                      placeholder={t("form_message")}
+                      rows={5}
+                      className="bg-white/50 dark:bg-white/[0.05] backdrop-blur-sm border border-black/10 dark:border-white/10 focus:border-sky-400/50 focus:ring-2 focus:ring-sky-400/40 placeholder:text-foreground/50 text-foreground rounded-xl resize-none transition-all duration-200"
+                    />
+                    <Button
+                      type="submit"
+                      className="bg-gradient-to-r from-sky-500 via-sky-500 to-cyan-500 hover:from-sky-400 hover:via-sky-400 hover:to-cyan-400 text-white h-12 sm:h-13 font-bold shadow-lg shadow-sky-500/30 hover:shadow-sky-500/50 transition-all duration-200 active:scale-95 w-full sm:w-auto"
+                    >
+                      {t("form_send")} <ArrowRight className="ml-2 h-5 w-5" />
+                    </Button>
+                  </div>
                 </div>
               </form>
             </div>
