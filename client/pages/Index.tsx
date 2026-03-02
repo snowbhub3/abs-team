@@ -5,7 +5,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { useI18n } from "@/components/layout/Language";
 import { ArrowRight, Sparkles, Rocket, LineChart, PenTool, Shield, Mail } from "lucide-react";
 import React, { useRef, useState, useEffect } from "react";
-import { PricingSection } from "@/components/sections/PricingSection";
+import { PricingCarousel } from "@/components/sections/PricingCarousel";
 
 export default function Index() {
   const { t } = useI18n();
@@ -226,7 +226,7 @@ export default function Index() {
       </section>
 
       {/* Pricing */}
-      <PricingSection />
+      <PricingCarousel />
 
       {/* Contact */}
       <section id="contact" className="relative flex flex-col justify-center py-12 sm:py-16 lg:py-24 bg-white/[0.02]">
