@@ -72,12 +72,12 @@ export default function SiteHeader() {
         </div>
       </div>
 
-      {/* Drawer via portal to avoid stacking issues */}
-      {open && createPortal(
-        <div className={`fixed inset-x-0 bottom-0 z-[100] transition ${open ? "pointer-events-auto" : "pointer-events-none"}`} aria-hidden={!open} style={{ top: Math.max(0, top - 1) }}>
-          <div onClick={() => setOpen(false)} className={`absolute inset-0 bg-black/40 backdrop-blur-sm transition-opacity ${open ? "opacity-100" : "opacity-0"}`} />
+      {/* Drawer via portal - always rendered but controlled by CSS */}
+      {createPortal(
+        <div className={`fixed inset-x-0 bottom-0 z-[100] transition-all duration-300 ${open ? "pointer-events-auto" : "pointer-events-none"}`} aria-hidden={!open} style={{ top: Math.max(0, top - 1) }}>
+          <div onClick={() => setOpen(false)} className={`absolute inset-0 bg-black/40 backdrop-blur-sm transition-opacity duration-300 ${open ? "opacity-100" : "opacity-0"}`} />
           <div
-            className={`absolute right-0 top-0 h-full w-[88%] max-w-[88%] sm:w-80 rounded-l-2xl overflow-hidden border-l border-black/10 dark:border-white/10 shadow-2xl transform origin-right ${open ? "translate-x-0 animate-drawer" : "translate-x-full"}`}
+            className={`absolute right-0 top-0 h-full w-[88%] max-w-[88%] sm:w-80 rounded-l-2xl overflow-hidden border-l border-black/10 dark:border-white/10 shadow-2xl transform origin-right transition-transform duration-300 ${open ? "translate-x-0" : "translate-x-full"}`}
             style={{ backgroundColor: "hsl(var(--background))" }}
           >
             <WebNetworkPanel />
