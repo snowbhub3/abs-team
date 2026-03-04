@@ -239,7 +239,7 @@ export function PricingCarousel() {
             </p>
             <Button
               onClick={() => handleCTA("plus")}
-              className="bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 text-white h-11 px-8 font-semibold"
+              className="bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 text-white h-11 px-4 sm:px-8 font-semibold text-sm sm:text-base scale-80 sm:scale-100 origin-center"
             >
               {locale === "de" ? "Kostenlose Beratung anfragen" : locale === "en" ? "Request free consultation" : "Запросить бесплатную консультацию"} <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
