@@ -318,7 +318,7 @@ export default function Index() {
                   <div className="flex justify-center mt-6">
                     <Button
                       type="submit"
-                      className="bg-gradient-to-r from-sky-500 via-sky-500 to-cyan-500 hover:from-sky-400 hover:via-sky-400 hover:to-cyan-400 text-white h-11 sm:h-12 font-semibold shadow-lg shadow-sky-500/30 hover:shadow-sky-500/50 transition-all duration-200 active:scale-95 px-4 sm:px-8 text-sm sm:text-base flex items-center gap-2 sm:gap-2"
+                      className="bg-gradient-to-r from-sky-500 via-sky-500 to-cyan-500 hover:from-sky-400 hover:via-sky-400 hover:to-cyan-400 text-white h-10 sm:h-12 font-semibold shadow-lg shadow-sky-500/30 hover:shadow-sky-500/50 transition-all duration-200 active:scale-95 px-3 sm:px-8 text-xs sm:text-base flex items-center gap-1.5 sm:gap-2 scale-75 sm:scale-100 origin-center"
                     >
                       <span>{t("form_send")}</span>
                       <ArrowRight className="hidden sm:inline h-5 w-5" />
