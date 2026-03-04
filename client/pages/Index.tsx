@@ -307,16 +307,16 @@ export default function Index() {
                   <h3 className="text-xl sm:text-2xl font-bold mb-2 text-foreground">{t("contact_free_consultation")}</h3>
                   <p className="text-sm text-muted-foreground mb-6">Schreiben Sie Ihre Nachricht und wir melden uns innerhalb von 24 Stunden</p>
 
-                  <div className="grid gap-4">
+                  <div className="flex flex-col sm:flex-row gap-4 items-stretch sm:items-end">
                     <Textarea
                       ref={msgRef}
                       placeholder={t("form_message")}
                       rows={5}
-                      className="bg-white/50 dark:bg-white/[0.05] backdrop-blur-sm border border-black/10 dark:border-white/10 focus:border-sky-400/50 focus:ring-2 focus:ring-sky-400/40 placeholder:text-foreground/50 text-foreground rounded-xl resize-none transition-all duration-200"
+                      className="flex-1 bg-white/50 dark:bg-white/[0.05] backdrop-blur-sm border border-black/10 dark:border-white/10 focus:border-sky-400/50 focus:ring-2 focus:ring-sky-400/40 placeholder:text-foreground/50 text-foreground rounded-xl resize-none transition-all duration-200"
                     />
                     <Button
                       type="submit"
-                      className="bg-gradient-to-r from-sky-500 via-sky-500 to-cyan-500 hover:from-sky-400 hover:via-sky-400 hover:to-cyan-400 text-white h-12 sm:h-13 font-bold shadow-lg shadow-sky-500/30 hover:shadow-sky-500/50 transition-all duration-200 active:scale-95 w-full sm:w-auto"
+                      className="bg-gradient-to-r from-sky-500 via-sky-500 to-cyan-500 hover:from-sky-400 hover:via-sky-400 hover:to-cyan-400 text-white h-12 sm:h-auto font-bold shadow-lg shadow-sky-500/30 hover:shadow-sky-500/50 transition-all duration-200 active:scale-95 whitespace-nowrap px-6"
                     >
                       {t("form_send")} <ArrowRight className="ml-2 h-5 w-5" />
                     </Button>
