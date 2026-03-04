@@ -21,6 +21,18 @@ export default function SiteHeader() {
   const [open, setOpen] = React.useState(false);
   const headerRef = React.useRef<HTMLElement | null>(null);
   const [top, setTop] = React.useState(64);
+  const menuOpenRef = React.useRef(false);
+
+  const toggleMenu = React.useCallback(() => {
+    menuOpenRef.current = !menuOpenRef.current;
+    setOpen(menuOpenRef.current);
+  }, []);
+
+  const closeMenu = React.useCallback(() => {
+    menuOpenRef.current = false;
+    setOpen(false);
+  }, []);
+
   React.useEffect(() => {
     const update = () => {
       const rect = headerRef.current?.getBoundingClientRect();
@@ -35,6 +47,17 @@ export default function SiteHeader() {
     document.body.style.overflow = open ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [open]);
+
+  // Close menu on escape key
+  React.useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && open) {
+        closeMenu();
+      }
+    };
+    window.addEventListener("keydown", handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
+  }, [open, closeMenu]);
   return (
     <header ref={headerRef} className="fixed top-0 inset-x-0 z-40 backdrop-blur-md bg-white/70 dark:bg-black/30 border-b border-black/5 dark:border-white/10 pt-safe">
       <div className="mx-auto max-w-screen-2xl px-3 sm:px-6 flex h-16 items-center justify-between">
@@ -60,7 +83,7 @@ export default function SiteHeader() {
           {/* Mobile-only menu */}
           <div className="sm:block md:hidden">
             <Button
-              onClick={() => setOpen((v)=>!v)}
+              onClick={toggleMenu}
               aria-expanded={open}
               size="icon"
               variant="secondary"
@@ -75,16 +98,16 @@ export default function SiteHeader() {
       {/* Drawer via portal - always rendered but controlled by CSS */}
       {createPortal(
         <div className={`fixed inset-x-0 bottom-0 z-[100] transition-all duration-300 ${open ? "pointer-events-auto" : "pointer-events-none"}`} aria-hidden={!open} style={{ top: Math.max(0, top - 1) }}>
-          <div onClick={() => setOpen(false)} className={`absolute inset-0 bg-black/40 backdrop-blur-sm transition-opacity duration-300 ${open ? "opacity-100" : "opacity-0"}`} />
+          <div onClick={closeMenu} className={`absolute inset-0 bg-black/40 backdrop-blur-sm transition-opacity duration-300 ${open ? "opacity-100" : "opacity-0"}`} style={{ pointerEvents: open ? "auto" : "none" }} />
           <div
             className={`absolute right-0 top-0 h-full w-[88%] max-w-[88%] sm:w-80 rounded-l-2xl overflow-hidden border-l border-black/10 dark:border-white/10 shadow-2xl transform origin-right transition-transform duration-300 ${open ? "translate-x-0" : "translate-x-full"}`}
-            style={{ backgroundColor: "hsl(var(--background))" }}
+            style={{ backgroundColor: "hsl(var(--background))", pointerEvents: open ? "auto" : "none" }}
           >
             <WebNetworkPanel />
             <div className="relative z-10 p-4 flex flex-col gap-3">
               {navItems.map((i) => (
                 <a key={i.id} href={i.href} onClick={(e) => {
-                  setOpen(false);
+                  closeMenu();
                   if (i.href.startsWith("#")) {
                     e.preventDefault();
                     const el = document.querySelector(i.href);
@@ -97,9 +120,9 @@ export default function SiteHeader() {
               <div className="pt-4">
                 <div className="text-xs text-muted-foreground mb-2 flex items-center gap-2"><Languages className="h-4 w-4"/>Sprache / Language</div>
                 <div className="flex rounded-lg border border-black/10 dark:border-white/10 overflow-hidden w-fit flex-wrap">
-                  <button onClick={() => setLocale("de")} className={`px-3 py-1 text-sm ${locale === "de" ? "bg-black/10 dark:bg-white/10" : "text-muted-foreground"}`}>DE</button>
-                  <button onClick={() => setLocale("en")} className={`px-3 py-1 text-sm ${locale === "en" ? "bg-black/10 dark:bg-white/10" : "text-muted-foreground"}`}>EN</button>
-                  <button onClick={() => setLocale("ru")} className={`px-3 py-1 text-sm ${locale === "ru" ? "bg-black/10 dark:bg-white/10" : "text-muted-foreground"}`}>RU</button>
+                  <button onClick={() => { setLocale("de"); closeMenu(); }} className={`px-3 py-1 text-sm ${locale === "de" ? "bg-black/10 dark:bg-white/10" : "text-muted-foreground"}`}>DE</button>
+                  <button onClick={() => { setLocale("en"); closeMenu(); }} className={`px-3 py-1 text-sm ${locale === "en" ? "bg-black/10 dark:bg-white/10" : "text-muted-foreground"}`}>EN</button>
+                  <button onClick={() => { setLocale("ru"); closeMenu(); }} className={`px-3 py-1 text-sm ${locale === "ru" ? "bg-black/10 dark:bg-white/10" : "text-muted-foreground"}`}>RU</button>
                 </div>
               </div>
             </div>
