@@ -314,9 +314,11 @@ export default function Index() {
                       rows={5}
                       className="flex-1 bg-white/50 dark:bg-white/[0.05] backdrop-blur-sm border border-black/10 dark:border-white/10 focus:border-sky-400/50 focus:ring-2 focus:ring-sky-400/40 placeholder:text-foreground/50 text-foreground rounded-xl resize-none transition-all duration-200"
                     />
+                  </div>
+                  <div className="flex justify-center mt-4">
                     <Button
                       type="submit"
-                      className="bg-gradient-to-r from-sky-500 via-sky-500 to-cyan-500 hover:from-sky-400 hover:via-sky-400 hover:to-cyan-400 text-white h-12 sm:h-auto font-bold shadow-lg shadow-sky-500/30 hover:shadow-sky-500/50 transition-all duration-200 active:scale-95 whitespace-nowrap px-4 sm:px-6 flex-shrink-0"
+                      className="bg-gradient-to-r from-sky-500 via-sky-500 to-cyan-500 hover:from-sky-400 hover:via-sky-400 hover:to-cyan-400 text-white h-12 sm:h-auto font-bold shadow-lg shadow-sky-500/30 hover:shadow-sky-500/50 transition-all duration-200 active:scale-95 whitespace-nowrap px-4 sm:px-6 w-4/5 sm:w-auto"
                     >
                       {t("form_send")} <ArrowRight className="ml-2 h-5 w-5" />
                     </Button>
