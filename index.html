@@ -37,6 +37,39 @@
     <meta name="twitter:description" content="Websites auf Abo. Modern, schnell, SEO-optimiert. Jetzt informieren!" />
     <meta name="twitter:image" content="/placeholder.svg" />
 
+    <!-- Critical CSS for immediate display -->
+    <style>
+      :root {
+        --background: 0 0% 97.5%;
+        --foreground: 222.2 47% 12%;
+      }
+      .dark {
+        --background: 222.2 84% 4.9%;
+        --foreground: 210 40% 98%;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background-color: hsl(var(--background));
+        color: hsl(var(--foreground));
+        margin: 0;
+        padding: 0;
+        font-family: Inter, system-ui, sans-serif;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+      #root {
+        background-color: hsl(var(--background));
+        color: hsl(var(--foreground));
+      }
+    </style>
+    <!-- Detect dark mode immediately -->
+    <script>
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.classList.add('dark');
+      }
+    </script>
+
     <!-- Schema.org structured data -->
     <script type="application/ld+json">
     {

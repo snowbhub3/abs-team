@@ -80,6 +80,8 @@ export default function SiteFooter() {
                         src={theme === "dark" ? sponsor.imageDark : sponsor.imageLights}
                         alt={sponsor.name}
                         className="h-20 sm:h-32 w-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity"
+                        loading="lazy"
+                        decoding="async"
                       />
                     </a>
                   </div>
