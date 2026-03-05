@@ -4,7 +4,7 @@ import { useLegalModal } from "./LegalModalContext";
 import useEmblaCarousel from "embla-carousel-react";
 
 export default function SiteFooter() {
-  const { t, locale } = useI18n();
+  const { t, locale, theme } = useI18n();
   const { openModal } = useLegalModal();
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
@@ -13,14 +13,22 @@ export default function SiteFooter() {
 
   const sponsors = [
     {
-      name: "ChatGPT",
-      url: "https://chatgpt.com",
-      image: "https://cdn.builder.io/api/v1/image/assets%2F9771a46ddd5946ce8be5cc856996d760%2F3ca8c9e595ac4aed981074c6d9367fc2?format=webp&width=800&height=1200",
+      name: "GitHub",
+      url: "https://github.com",
+      imageLights: "https://cdn.builder.io/api/v1/image/assets%2F9771a46ddd5946ce8be5cc856996d760%2F0f4ca20e757743168557b146e322ccce?format=webp&width=800&height=1200",
+      imageDark: "https://cdn.builder.io/api/v1/image/assets%2F9771a46ddd5946ce8be5cc856996d760%2F089f83799e0f4492a863d67f4e42d25c?format=webp&width=800&height=1200",
     },
     {
       name: "Netlify",
       url: "https://www.netlify.com",
-      image: "https://cdn.builder.io/api/v1/image/assets%2F9771a46ddd5946ce8be5cc856996d760%2F6ed7b100e8a24ad19f1f4297734e834e?format=webp&width=800&height=1200",
+      imageLights: "https://cdn.builder.io/api/v1/image/assets%2F9771a46ddd5946ce8be5cc856996d760%2Fa305ad77e9fa4751b8323298c19888e5?format=webp&width=800&height=1200",
+      imageDark: "https://cdn.builder.io/api/v1/image/assets%2F9771a46ddd5946ce8be5cc856996d760%2F56a7351a29944673a14915ce036aa6bb?format=webp&width=800&height=1200",
+    },
+    {
+      name: "OpenAI",
+      url: "https://openai.com",
+      imageLights: "https://cdn.builder.io/api/v1/image/assets%2F9771a46ddd5946ce8be5cc856996d760%2Ff284ee2d69e74e31bbf5f0a69517f48e?format=webp&width=800&height=1200",
+      imageDark: "https://cdn.builder.io/api/v1/image/assets%2F9771a46ddd5946ce8be5cc856996d760%2F9e07dca2377c4d10903acb5f59108161?format=webp&width=800&height=1200",
     },
   ];
 
@@ -69,7 +77,7 @@ export default function SiteFooter() {
                       title={sponsor.name}
                     >
                       <img
-                        src={sponsor.image}
+                        src={theme === "dark" ? sponsor.imageDark : sponsor.imageLights}
                         alt={sponsor.name}
                         className="h-20 sm:h-32 w-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity"
                       />
