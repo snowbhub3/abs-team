@@ -13,28 +13,14 @@ export default function SiteFooter() {
 
   const sponsors = [
     {
-      name: "Builder.io",
-      url: "https://www.builder.io",
-      icon: (
-        <svg className="h-5 w-5 sm:h-6 sm:w-6" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="200" height="200" rx="40" fill="#5E5EC6" />
-          <text x="100" y="120" textAnchor="middle" fontSize="80" fontWeight="900" fill="white" fontFamily="Arial">
-            B
-          </text>
-        </svg>
-      ),
+      name: "ChatGPT",
+      url: "https://chatgpt.com",
+      image: "https://cdn.builder.io/api/v1/image/assets%2F9771a46ddd5946ce8be5cc856996d760%2F3ca8c9e595ac4aed981074c6d9367fc2?format=webp&width=800&height=1200",
     },
     {
       name: "Netlify",
       url: "https://www.netlify.com",
-      icon: (
-        <svg className="h-5 w-5 sm:h-6 sm:w-6" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="200" height="200" rx="40" fill="#00C7B7" />
-          <text x="100" y="120" textAnchor="middle" fontSize="80" fontWeight="900" fill="white" fontFamily="Arial">
-            N
-          </text>
-        </svg>
-      ),
+      image: "https://cdn.builder.io/api/v1/image/assets%2F9771a46ddd5946ce8be5cc856996d760%2F6ed7b100e8a24ad19f1f4297734e834e?format=webp&width=800&height=1200",
     },
   ];
 
@@ -43,7 +29,7 @@ export default function SiteFooter() {
 
     const timer = setInterval(() => {
       emblaApi.scrollNext();
-    }, 5000);
+    }, 4000);
 
     return () => clearInterval(timer);
   }, [emblaApi]);
@@ -69,20 +55,24 @@ export default function SiteFooter() {
     <footer className="border-t border-white/5 py-8 sm:py-10 text-sm text-muted-foreground">
       <div className="container px-4 sm:px-6">
         <div className="space-y-6 sm:space-y-8">
-          {/* Sponsors Carousel */}
+          {/* Sponsors Carousel - Shows one logo at a time */}
           <div className="flex justify-center">
-            <div className="overflow-hidden" ref={emblaRef}>
-              <div className="flex gap-6 sm:gap-8">
+            <div className="overflow-hidden w-full max-w-xs sm:max-w-sm" ref={emblaRef}>
+              <div className="flex">
                 {sponsors.map((sponsor) => (
-                  <div key={sponsor.name} className="flex-[0_0_auto]">
+                  <div key={sponsor.name} className="flex-[0_0_100%] flex items-center justify-center min-w-0">
                     <a
                       href={sponsor.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group flex items-center justify-center p-2 sm:p-3 rounded-lg border border-white/10 hover:border-white/20 bg-white/[0.02] hover:bg-white/[0.05] transition-all"
+                      className="group flex items-center justify-center transition-transform hover:scale-105"
                       title={sponsor.name}
                     >
-                      {sponsor.icon}
+                      <img
+                        src={sponsor.image}
+                        alt={sponsor.name}
+                        className="h-20 sm:h-32 w-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity"
+                      />
                     </a>
                   </div>
                 ))}
@@ -93,65 +83,65 @@ export default function SiteFooter() {
           {/* Divider */}
           <div className="h-px bg-white/5" />
 
-          {/* Navigation Links - Single row on desktop, two columns on mobile */}
-          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6 sm:gap-8">
-            {/* Left Column / Row */}
-            <div className="flex flex-wrap gap-3 sm:gap-4 opacity-75">
+          {/* Navigation Links - Mobile: 2 columns, Desktop: 1 row */}
+          <div className="grid grid-cols-2 sm:flex sm:flex-wrap sm:justify-between gap-6 sm:gap-4 opacity-75">
+            {/* Left column on mobile / Left group on desktop */}
+            <div className="space-y-3 sm:space-y-0 sm:flex sm:gap-4">
               <a
                 href="#services"
                 onClick={handleAnchorClick}
-                className="hover:opacity-100 transition-opacity text-xs sm:text-sm whitespace-nowrap"
+                className="block sm:inline hover:opacity-100 transition-opacity text-xs sm:text-sm whitespace-nowrap"
               >
                 {t("nav_services")}
               </a>
-              <span className="text-foreground/30">•</span>
+              <span className="hidden sm:inline text-foreground/30">•</span>
               <a
                 href="#process"
                 onClick={handleAnchorClick}
-                className="hover:opacity-100 transition-opacity text-xs sm:text-sm whitespace-nowrap"
+                className="block sm:inline hover:opacity-100 transition-opacity text-xs sm:text-sm whitespace-nowrap"
               >
                 {t("nav_process")}
               </a>
-              <span className="text-foreground/30">•</span>
+              <span className="hidden sm:inline text-foreground/30">•</span>
               <a
                 href="#projects"
                 onClick={handleAnchorClick}
-                className="hover:opacity-100 transition-opacity text-xs sm:text-sm whitespace-nowrap"
+                className="block sm:inline hover:opacity-100 transition-opacity text-xs sm:text-sm whitespace-nowrap"
               >
                 {t("nav_projects")}
               </a>
             </div>
 
-            {/* Right Column / Row - Right aligned */}
-            <div className="flex flex-wrap gap-3 sm:gap-4 opacity-75 sm:justify-end">
+            {/* Right column on mobile / Right group on desktop */}
+            <div className="space-y-3 sm:space-y-0 sm:flex sm:gap-4 sm:ml-auto text-right sm:text-left">
               <a
                 href="#"
                 onClick={(e) => handleLegalClick(e, "impressum")}
-                className="hover:opacity-100 transition-opacity text-xs sm:text-sm whitespace-nowrap"
+                className="block sm:inline hover:opacity-100 transition-opacity text-xs sm:text-sm whitespace-nowrap"
               >
                 {t("footer_impressum")}
               </a>
-              <span className="text-foreground/30">•</span>
+              <span className="hidden sm:inline text-foreground/30">•</span>
               <a
                 href="#"
                 onClick={(e) => handleLegalClick(e, "datenschutz")}
-                className="hover:opacity-100 transition-opacity text-xs sm:text-sm whitespace-nowrap"
+                className="block sm:inline hover:opacity-100 transition-opacity text-xs sm:text-sm whitespace-nowrap"
               >
                 {locale === "ru" ? "Privacy" : t("footer_privacy")}
               </a>
-              <span className="text-foreground/30">•</span>
+              <span className="hidden sm:inline text-foreground/30">•</span>
               <a
                 href="#"
                 onClick={(e) => handleLegalClick(e, "agb")}
-                className="hover:opacity-100 transition-opacity text-xs sm:text-sm whitespace-nowrap"
+                className="block sm:inline hover:opacity-100 transition-opacity text-xs sm:text-sm whitespace-nowrap"
               >
                 {t("footer_terms")}
               </a>
-              <span className="text-foreground/30">•</span>
+              <span className="hidden sm:inline text-foreground/30">•</span>
               <a
                 href="#contact"
                 onClick={handleAnchorClick}
-                className="hover:opacity-100 transition-opacity text-xs sm:text-sm whitespace-nowrap"
+                className="block sm:inline hover:opacity-100 transition-opacity text-xs sm:text-sm whitespace-nowrap"
               >
                 {t("footer_contact")}
               </a>
