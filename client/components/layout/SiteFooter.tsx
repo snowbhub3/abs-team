@@ -1,7 +1,7 @@
 import React from "react";
 import { useI18n } from "./Language";
 import { useLegalModal } from "./LegalModalContext";
-import { useEmblaCarousel } from "embla-carousel-react";
+import useEmblaCarousel from "embla-carousel-react";
 import { ExternalLink } from "lucide-react";
 
 export default function SiteFooter() {
@@ -42,11 +42,10 @@ export default function SiteFooter() {
   React.useEffect(() => {
     if (!emblaApi) return;
 
-    const autoplay = () => {
+    const timer = setInterval(() => {
       emblaApi.scrollNext();
-    };
+    }, 5000);
 
-    const timer = setInterval(autoplay, 4000);
     return () => clearInterval(timer);
   }, [emblaApi]);
 
