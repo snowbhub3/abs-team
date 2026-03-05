@@ -10,8 +10,6 @@ export default function SiteFooter() {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
     align: "center",
-    autoplay: true,
-    duration: 5000,
   });
 
   const sponsors = [
@@ -76,7 +74,7 @@ export default function SiteFooter() {
           {/* Sponsors Carousel */}
           <div className="max-w-md mx-auto">
             <div className="text-center text-xs uppercase tracking-widest text-foreground/50 mb-6">
-              {t("locale") === "de" ? "Vertraut von" : t("locale") === "en" ? "Trusted by" : "Доверяют нам"}
+              {locale === "de" ? "Vertraut von" : locale === "en" ? "Trusted by" : "Доверяют нам"}
             </div>
             <div className="overflow-hidden rounded-lg" ref={emblaRef}>
               <div className="flex">
@@ -109,7 +107,7 @@ export default function SiteFooter() {
             {/* Column 1 */}
             <div className="space-y-4">
               <div className="text-foreground/60 text-xs uppercase tracking-widest font-medium">
-                {t("locale") === "de" ? "Services" : t("locale") === "en" ? "Services" : "Услуги"}
+                {locale === "de" ? "Services" : locale === "en" ? "Services" : "Услуги"}
               </div>
               <div className="space-y-3 opacity-75">
                 <a
@@ -139,7 +137,7 @@ export default function SiteFooter() {
             {/* Column 2 */}
             <div className="space-y-4">
               <div className="text-foreground/60 text-xs uppercase tracking-widest font-medium">
-                {t("locale") === "de" ? "Rechtliches" : t("locale") === "en" ? "Legal" : "Правовая"}
+                {locale === "de" ? "Rechtliches" : locale === "en" ? "Legal" : "Правовая"}
               </div>
               <div className="space-y-3 opacity-75">
                 <a
@@ -173,7 +171,7 @@ export default function SiteFooter() {
           {/* Copyright at bottom */}
           <div className="text-center">
             <p className="text-xs opacity-50">
-              {new Date().getFullYear()} © ABS Studio. {t("locale") === "de" ? "Alle Rechte vorbehalten." : t("locale") === "en" ? "All rights reserved." : "Все права защищены."}
+              {new Date().getFullYear()} © ABS Studio. {locale === "de" ? "Alle Rechte vorbehalten." : locale === "en" ? "All rights reserved." : "Все права защищены."}
             </p>
           </div>
         </div>
