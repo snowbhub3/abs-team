@@ -109,17 +109,17 @@ export function PricingCarousel() {
       <section className="relative py-16 sm:py-20 lg:py-32">
         <div className="container">
           {/* Carousel Container */}
-          <div className="relative">
+          <div className="relative px-4 sm:px-6">
             {/* Embla Carousel */}
             <div className="overflow-hidden" ref={emblaRef}>
-              <div className="flex gap-6 sm:gap-8 md:gap-6">
+              <div className="flex gap-6 sm:gap-8 md:gap-6 py-4">
                 {plans.map((plan) => (
-                  <div key={plan.id} className="flex-[0_0_100%] sm:flex-[0_0_90%] md:flex-[0_0_calc(50%-12px)] lg:flex-[0_0_calc(33.333%-16px)] min-w-0">
+                  <div key={plan.id} className="flex-[0_0_100%] sm:flex-[0_0_90%] md:flex-[0_0_calc(50%-12px)] lg:flex-[0_0_calc(33.333%-16px)] min-w-0 flex items-center justify-center">
                     <Card
                       data-reveal
                       className={`relative overflow-hidden border rounded-2xl p-6 sm:p-8 h-full flex flex-col opacity-100 transition-all duration-500 ${
                         plan.popular
-                          ? "md:scale-105 border-sky-500/50 bg-gradient-to-br from-sky-500/10 via-background to-background shadow-2xl shadow-sky-500/20"
+                          ? "md:scale-100 lg:scale-105 border-sky-500/50 bg-gradient-to-br from-sky-500/10 via-background to-background shadow-2xl shadow-sky-500/20"
                           : "border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/[0.03]"
                       }`}
                     >

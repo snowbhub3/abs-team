@@ -100,6 +100,13 @@ export function LegalModal({ type, open, onClose }: LegalModalProps) {
 
                   <h2 className="text-xl font-semibold mt-6 mb-3">Urheberrecht</h2>
                   <p>Die auf unserer Website veröffentlichten Inhalte und Werke unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des Autors oder Schöpfers. Downloads und Kopien dieser Seite sind nur für den privaten Gebrauch gestattet.</p>
+
+                  <div className="bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-700 rounded-lg p-4 mt-8">
+                    <h2 className="text-lg font-semibold text-amber-900 dark:text-amber-200 mb-3">⚠️ Testformat-Hinweis</h2>
+                    <p className="text-sm text-amber-800 dark:text-amber-300 mb-3">Diese Website befindet sich derzeit im Testformat und führt keine kommerzielle Tätigkeit durch. Alle Inhalte, Dienste und Angebote sind zu Demonstrationszwecken gedacht.</p>
+                    <p className="text-sm text-amber-800 dark:text-amber-300 mb-3"><strong>Suchmaschinen:</strong> Diese Website hat den Google-Index ausgeschlossen und wird nicht in Suchergebnissen angezeigt.</p>
+                    <p className="text-sm text-amber-800 dark:text-amber-300"><strong>Entwickler & Eigentümer:</strong> <a href="https://www.linkedin.com/in/dmytro-shapovaliuk-4aab80394/" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">Dmytro Shapovaliuk</a><br/>Alle Rechte an dieser Website und deren Inhalten liegen bei Dmytro Shapovaliuk.</p>
+                  </div>
                 </>
               )}
               {locale === "en" && (
@@ -124,6 +131,13 @@ export function LegalModal({ type, open, onClose }: LegalModalProps) {
 
                   <h2 className="text-xl font-semibold mt-6 mb-3">Copyright</h2>
                   <p>The content and works published on our website are subject to German copyright law. Any reproduction, editing, distribution, and any use outside the limits of copyright law require written consent from the author or creator. Downloads and copies of this page are permitted only for private use.</p>
+
+                  <div className="bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-700 rounded-lg p-4 mt-8">
+                    <h2 className="text-lg font-semibold text-amber-900 dark:text-amber-200 mb-3">⚠️ Test Format Notice</h2>
+                    <p className="text-sm text-amber-800 dark:text-amber-300 mb-3">This website is currently in test format and does not conduct any commercial activities. All content, services, and offers are for demonstration purposes only.</p>
+                    <p className="text-sm text-amber-800 dark:text-amber-300 mb-3"><strong>Search Engines:</strong> This website has been excluded from Google indexing and will not appear in search results.</p>
+                    <p className="text-sm text-amber-800 dark:text-amber-300"><strong>Developer & Owner:</strong> <a href="https://www.linkedin.com/in/dmytro-shapovaliuk-4aab80394/" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">Dmytro Shapovaliuk</a><br/>All rights to this website and its contents belong to Dmytro Shapovaliuk.</p>
+                  </div>
                 </>
               )}
               {locale === "ru" && (
@@ -148,6 +162,13 @@ export function LegalModal({ type, open, onClose }: LegalModalProps) {
 
                   <h2 className="text-xl font-semibold mt-6 mb-3">Авторское право</h2>
                   <p>Содержание и работы, опубликованные на нашем веб-сайте, подпадают под действие немецкого авторского права. Любое воспроизведение, редактирование, распространение и любое использование вне пределов авторского права требуют письменного согласия автора или создателя. Загрузки и копии этой страницы разрешены только для личного использования.</p>
+
+                  <div className="bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-700 rounded-lg p-4 mt-8">
+                    <h2 className="text-lg font-semibold text-amber-900 dark:text-amber-200 mb-3">⚠️ Уведомление о тестовом формате</h2>
+                    <p className="text-sm text-amber-800 dark:text-amber-300 mb-3">Этот веб-сайт в настоящее время находится в тестовом формате и не ведет никакой коммерческой деятельности. Все содержание, услуги и предложения предназначены только в демонстрационных целях.</p>
+                    <p className="text-sm text-amber-800 dark:text-amber-300 mb-3"><strong>Поисковые системы:</strong> Этот веб-сайт исключен из индексирования Google и не появляется в результатах поиска.</p>
+                    <p className="text-sm text-amber-800 dark:text-amber-300"><strong>Разработчик и владелец:</strong> <a href="https://www.linkedin.com/in/dmytro-shapovaliuk-4aab80394/" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">Dmytro Shapovaliuk</a><br/>Все права на этот веб-сайт и его содержание принадлежат Dmytro Shapovaliuk.</p>
+                  </div>
                 </>
               )}
             </div>

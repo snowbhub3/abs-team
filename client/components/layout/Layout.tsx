@@ -1,12 +1,14 @@
-import React, { Suspense } from "react";
+import React, { Suspense, lazy, useEffect, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import SiteHeader from "./SiteHeader";
 import SiteFooter from "./SiteFooter";
-import WebNetwork from "@/components/effects/WebNetwork";
 import CookieBanner from "@/components/misc/CookieBanner";
 import { LegalModal } from "@/components/misc/LegalModal";
 import { useLegalModal } from "@/components/layout/LegalModalContext";
 import { useSEOMetaTags } from "@/hooks/use-seo-meta";
+
+// Lazy load WebNetwork for better initial performance
+const WebNetwork = lazy(() => import("@/components/effects/WebNetwork"));
 
 function PageLoader() {
   return (
@@ -20,16 +22,27 @@ export default function Layout() {
   useSEOMetaTags();
   const location = useLocation();
   const { currentModal, closeModal } = useLegalModal();
+  const [showNetwork, setShowNetwork] = useState(false);
 
   // Scroll to top on page change
-  React.useEffect(() => {
+  useEffect(() => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
+
+  // Load WebNetwork after page is interactive (delayed)
+  useEffect(() => {
+    const timer = setTimeout(() => setShowNetwork(true), 500);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <>
       <div className="relative min-h-screen bg-background text-foreground">
-        <WebNetwork />
+        {showNetwork && (
+          <Suspense fallback={null}>
+            <WebNetwork />
+          </Suspense>
+        )}
         <SiteHeader />
         <main className="relative z-10" style={{ paddingTop: "calc(4rem + env(safe-area-inset-top))" }}>
           <Suspense fallback={<PageLoader />}>

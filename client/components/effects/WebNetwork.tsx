@@ -15,10 +15,15 @@ export default function WebNetwork() {
 
     const spawn = (w: number, h: number) => {
       points.current = [];
-      const density = Math.max(32, Math.floor((w*h)/26000));
+      // Reduce density on mobile devices for better performance
+      const isMobile = w < 768;
+      const density = isMobile
+        ? Math.max(16, Math.floor((w*h)/40000))
+        : Math.max(32, Math.floor((w*h)/26000));
       for (let i=0; i<density; i++) {
         const x = Math.random()*w; const y = Math.random()*h;
-        const vx = (Math.random()-0.5)*0.25; const vy = (Math.random()-0.5)*0.25;
+        // Slower movement for smoother animation
+        const vx = (Math.random()-0.5)*0.15; const vy = (Math.random()-0.5)*0.15;
         points.current.push({x,y,vx,vy});
       }
     };
@@ -28,22 +33,23 @@ export default function WebNetwork() {
       ctx.clearRect(0,0,w,h);
       const isDark = document.documentElement.classList.contains("dark");
       const dot = isDark ? "rgba(59,130,246,0.8)" : "rgba(2,132,199,0.8)";
-      const line = isDark ? "rgba(56,189,248,0.28)" : "rgba(14,165,233,0.32)";
-      ctx.lineWidth = 1;
+      const line = isDark ? "rgba(56,189,248,0.25)" : "rgba(14,165,233,0.28)";
+      const maxDist = 120; // Reduced from 160 for better performance
+      ctx.lineWidth = 0.8;
       for (let i=0;i<points.current.length;i++){
         const p = points.current[i];
         for (let j=i+1;j<points.current.length;j++){
           const q = points.current[j];
           const dx = p.x-q.x, dy=p.y-q.y; const d = Math.hypot(dx,dy);
-          if (d<160) {
-            ctx.strokeStyle = line.replace(/0\.\d+/, String(Math.max(0.12, 0.4 - d/350)));
+          if (d<maxDist) {
+            ctx.strokeStyle = line.replace(/0\.\d+/, String(Math.max(0.1, 0.35 - d/280)));
             ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(q.x,q.y); ctx.stroke();
           }
         }
       }
       for (const p of points.current) {
         ctx.fillStyle = dot;
-        ctx.beginPath(); ctx.arc(p.x,p.y,1.4,0,Math.PI*2); ctx.fill();
+        ctx.beginPath(); ctx.arc(p.x,p.y,1.2,0,Math.PI*2); ctx.fill();
       }
     };
 
@@ -73,30 +79,32 @@ export default function WebNetwork() {
       const line = isDark ? "rgba(56,189,248,0.28)" : "rgba(14,165,233,0.32)";
 
       // update positions + slight attraction to pointer/touch
+      const maxDist = 120;
       for (const p of points.current) {
         if (pointer.active) {
           const dx = pointer.x - p.x; const dy = pointer.y - p.y; const d = Math.hypot(dx,dy) || 1;
-          if (d < 160) {
-            const f = (1 - d/160) * 0.35;
+          if (d < maxDist) {
+            const f = (1 - d/maxDist) * 0.25; // Smoother, less aggressive attraction
             p.vx += (dx / d) * f;
             p.vy += (dy / d) * f;
           }
         }
         p.x += p.vx; p.y += p.vy;
-        p.vx *= 0.985; p.vy *= 0.985;
+        p.vx *= 0.988; // Slower damping for smoother movement
+        p.vy *= 0.988;
         if (p.x<0||p.x>w) p.vx*=-1;
         if (p.y<0||p.y>h) p.vy*=-1;
       }
 
       // draw connections
-      ctx.lineWidth = 1;
+      ctx.lineWidth = 0.8;
       for (let i=0;i<points.current.length;i++){
         const p = points.current[i];
         for (let j=i+1;j<points.current.length;j++){
           const q = points.current[j];
           const dx = p.x-q.x, dy=p.y-q.y; const d = Math.hypot(dx,dy);
-          if (d<160) {
-            ctx.strokeStyle = line.replace(/0\.\d+/, String(Math.max(0.12, 0.4 - d/350)));
+          if (d<maxDist) {
+            ctx.strokeStyle = line.replace(/0\.\d+/, String(Math.max(0.1, 0.35 - d/280)));
             ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(q.x,q.y); ctx.stroke();
           }
         }
