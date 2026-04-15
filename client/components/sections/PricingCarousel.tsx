@@ -229,23 +229,6 @@ export function PricingCarousel() {
         </div>
       </section>
 
-      {/* FAQ / Additional info */}
-      <section className="relative py-16 sm:py-20 lg:py-32 bg-white/[0.02]">
-        <div className="container max-w-3xl">
-          <div className="text-center mb-12">
-            <h3 className="text-2xl lg:text-3xl font-bold mb-4">{t("pricing_contact")}</h3>
-            <p className="text-muted-foreground mb-8">
-              {locale === "de" ? "Wir passen unsere Pläne an Ihre spezifischen Anforderungen an. Sprechen Sie mit uns!" : locale === "en" ? "We customize our plans to your specific needs. Let's talk!" : "Мы адаптируем наши планы к вашим конкретным потребностям. Давайте поговорим!"}
-            </p>
-            <Button
-              onClick={() => handleCTA("plus")}
-              className="bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 text-white h-11 px-4 sm:px-8 font-semibold text-sm sm:text-base scale-80 sm:scale-100 origin-center"
-            >
-              {locale === "de" ? "Kostenlose Beratung anfragen" : locale === "en" ? "Request free consultation" : "Запросить бесплатную консультацию"} <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }
