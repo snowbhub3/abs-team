@@ -270,129 +270,140 @@ export default function Index() {
 
 
             {/* Message form */}
-            <div className="max-w-2xl mx-auto mt-8 sm:mt-12 relative">
-              <form onSubmit={send} className="group relative overflow-hidden rounded-2xl border border-black/10 dark:border-white/10 bg-gradient-to-br from-white/80 via-white/60 to-white/40 dark:from-white/[0.1] dark:via-white/[0.06] dark:to-white/[0.02] backdrop-blur-xl p-6 sm:p-8 shadow-2xl hover:shadow-2xl hover:shadow-sky-500/10 transition-all duration-300">
+            <div className="max-w-4xl mx-auto mt-8 sm:mt-12 relative">
+              <form onSubmit={send} className={`group relative overflow-hidden rounded-3xl border border-black/10 dark:border-white/10 bg-gradient-to-br from-white/80 via-white/60 to-white/40 dark:from-white/[0.1] dark:via-white/[0.06] dark:to-white/[0.02] backdrop-blur-xl p-8 sm:p-12 shadow-2xl hover:shadow-2xl hover:shadow-sky-500/10 transition-all duration-300 ${showContactButtons ? "relative z-50" : ""}`}>
                 {/* Decorative gradient */}
                 <div className="absolute -right-20 -top-20 w-40 h-40 bg-sky-500/20 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="absolute -left-20 -bottom-20 w-40 h-40 bg-cyan-500/10 rounded-full blur-3xl" />
 
                 <div className="relative z-10">
-                  <h3 className="text-xl sm:text-2xl font-bold mb-2 text-foreground">{t("contact_free_consultation")}</h3>
-                  <p className="text-sm text-muted-foreground mb-6">{t("form_description")}</p>
+                  <h3 className="text-2xl sm:text-3xl font-bold mb-3 text-foreground">{t("contact_free_consultation")}</h3>
+                  <p className="text-base sm:text-lg text-muted-foreground mb-8">{t("form_description")}</p>
 
                   <Textarea
                     ref={msgRef}
                     placeholder={t("form_message")}
-                    rows={8}
-                    className="w-full bg-white/50 dark:bg-white/[0.05] backdrop-blur-sm border border-black/10 dark:border-white/10 focus:border-sky-400/50 focus:ring-2 focus:ring-sky-400/40 placeholder:text-foreground/50 text-foreground rounded-xl resize-none transition-all duration-200 mb-6"
+                    rows={10}
+                    className="w-full bg-white/50 dark:bg-white/[0.05] backdrop-blur-sm border border-black/10 dark:border-white/10 focus:border-sky-400/50 focus:ring-2 focus:ring-sky-400/40 placeholder:text-foreground/50 text-foreground rounded-2xl resize-none transition-all duration-200 mb-8 p-4 sm:p-6 text-sm sm:text-base"
                   />
 
                   <div className="flex justify-center">
                     <Button
                       type="submit"
-                      className="bg-gradient-to-r from-sky-500 via-sky-500 to-cyan-500 hover:from-sky-400 hover:via-sky-400 hover:to-cyan-400 text-white h-12 sm:h-13 font-bold shadow-lg shadow-sky-500/30 hover:shadow-sky-500/50 transition-all duration-200 active:scale-95 whitespace-nowrap px-8"
+                      className={`bg-gradient-to-r from-sky-500 via-sky-500 to-cyan-500 hover:from-sky-400 hover:via-sky-400 hover:to-cyan-400 text-white h-14 sm:h-16 font-bold shadow-lg shadow-sky-500/30 hover:shadow-sky-500/50 transition-all duration-300 active:scale-95 whitespace-nowrap px-10 text-base sm:text-lg rounded-2xl ${showContactButtons ? "opacity-0 scale-0" : "opacity-100 scale-100"}`}
                     >
-                      {showContactButtons ? "Выбери канал..." : "Отправить"}
+                      {t("form_send")}
                     </Button>
                   </div>
                 </div>
               </form>
 
               {/* Animated Contact Buttons */}
-              <div className={`fixed inset-0 pointer-events-none transition-opacity duration-300 ${showContactButtons ? "pointer-events-auto opacity-100" : "opacity-0"}`} style={{ zIndex: showContactButtons ? 1000 : -1 }}>
-                {/* Backdrop */}
-                <div
-                  className="absolute inset-0 bg-black/40 backdrop-blur-sm"
-                  onClick={() => setShowContactButtons(false)}
-                  style={{ opacity: showContactButtons ? 1 : 0 }}
-                />
+              {showContactButtons && (
+                <div className="fixed inset-0 pointer-events-auto z-40 flex items-center justify-center">
+                  {/* Backdrop - blur everything except the form */}
+                  <div
+                    className="absolute inset-0 bg-black/50 backdrop-blur-md"
+                    onClick={() => setShowContactButtons(false)}
+                  />
 
-                {/* Buttons Container - Fixed positioning for mobile */}
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                  {/* WhatsApp Button - Left */}
-                  <button
-                    onClick={sendViaWhatsApp}
-                    className="absolute pointer-events-auto w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gradient-to-br from-green-400 to-green-600 hover:from-green-300 hover:to-green-700 hover:scale-110 shadow-2xl shadow-green-500/60 flex items-center justify-center text-white font-bold transition-all duration-300"
-                    style={{
-                      animationName: showContactButtons ? "popIn" : "popOut",
-                      animationDuration: showContactButtons ? "0.5s" : "0.3s",
-                      animationTimingFunction: showContactButtons ? "cubic-bezier(0.34, 1.56, 0.64, 1)" : "ease-in",
-                      animationFillMode: showContactButtons ? "both" : "forwards",
-                      animationDelay: "0.1s",
-                      "--tx": "-120px",
-                      "--ty": "0px",
-                    } as React.CSSProperties}
-                    title="WhatsApp"
-                  >
-                    <svg className="w-10 h-10 sm:w-12 sm:h-12" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371 0-.57 0-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-4.934 1.239c-1.506.906-2.73 2.217-3.522 3.756-.852 1.712-1.247 3.581-.997 5.514.25 1.933 1.058 3.731 2.368 5.165 1.31 1.434 3.02 2.446 4.934 2.959 2.49.75 5.245.49 7.556-.801 1.4-.789 2.617-1.932 3.502-3.261.915-1.401 1.431-2.984 1.596-4.611.165-1.627-.052-3.304-.567-4.848-.534-1.628-1.479-3.074-2.768-4.204-1.289-1.13-2.915-1.944-4.656-2.407-.982-.253-1.994-.35-3.009-.282z"/>
-                    </svg>
-                  </button>
+                  {/* Form stays visible - positioned relative to viewport center */}
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 pointer-events-none">
+                    {/* Buttons Container - On same level horizontal */}
+                    <div className="flex items-center justify-center gap-6 sm:gap-8 mb-8">
+                      {/* WhatsApp Button - Square with logo */}
+                      <button
+                        onClick={sendViaWhatsApp}
+                        className="pointer-events-auto w-24 h-24 sm:w-28 sm:h-28 rounded-3xl bg-white/10 hover:bg-white/20 border-2 border-green-500 shadow-2xl shadow-green-500/50 flex items-center justify-center text-white font-bold transition-all duration-300 hover:scale-110"
+                        style={{
+                          animationName: "slideInLeft",
+                          animationDuration: "0.6s",
+                          animationTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
+                          animationFillMode: "both",
+                        } as React.CSSProperties}
+                        title="WhatsApp"
+                      >
+                        <img
+                          src="https://cdn.builder.io/api/v1/image/assets%2F9771a46ddd5946ce8be5cc856996d760%2F78852eb5ee844ab1bf6d81dcb7f4140f?format=webp&width=200"
+                          alt="WhatsApp"
+                          className="w-16 h-16 sm:w-20 sm:h-20"
+                        />
+                      </button>
 
-                  {/* Telegram Button - Top Center */}
-                  <button
-                    onClick={sendViaTelegram}
-                    className="absolute pointer-events-auto w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gradient-to-br from-sky-400 to-sky-600 hover:from-sky-300 hover:to-sky-700 hover:scale-110 shadow-2xl shadow-sky-500/60 flex items-center justify-center text-white font-bold transition-all duration-300"
-                    style={{
-                      animationName: showContactButtons ? "popIn" : "popOut",
-                      animationDuration: showContactButtons ? "0.5s" : "0.3s",
-                      animationTimingFunction: showContactButtons ? "cubic-bezier(0.34, 1.56, 0.64, 1)" : "ease-in",
-                      animationFillMode: showContactButtons ? "both" : "forwards",
-                      animationDelay: "0.2s",
-                      "--tx": "0px",
-                      "--ty": "-140px",
-                    } as React.CSSProperties}
-                    title="Telegram"
-                  >
-                    <svg className="w-10 h-10 sm:w-12 sm:h-12" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0m5.894 8.221l-1.97 9.28c-.145.658-.537.82-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295-.393 0-.64-.247-.64-.64V9.6c0-.314.251-.571.56-.571h.005c4.782 1.396 8.955 2.605 8.181-4.32z"/>
-                    </svg>
-                  </button>
+                      {/* Telegram Button - Square with logo */}
+                      <button
+                        onClick={sendViaTelegram}
+                        className="pointer-events-auto w-24 h-24 sm:w-28 sm:h-28 rounded-3xl bg-white/10 hover:bg-white/20 border-2 border-sky-500 shadow-2xl shadow-sky-500/50 flex items-center justify-center text-white font-bold transition-all duration-300 hover:scale-110"
+                        style={{
+                          animationName: "slideInUp",
+                          animationDuration: "0.6s",
+                          animationTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
+                          animationFillMode: "both",
+                          animationDelay: "0.1s",
+                        } as React.CSSProperties}
+                        title="Telegram"
+                      >
+                        <img
+                          src="https://cdn.builder.io/api/v1/image/assets%2F9771a46ddd5946ce8be5cc856996d760%2F93026108fa59460db9588f52b6045729?format=webp&width=200"
+                          alt="Telegram"
+                          className="w-16 h-16 sm:w-20 sm:h-20"
+                        />
+                      </button>
 
-                  {/* Email Button - Right */}
-                  <button
-                    onClick={sendViaEmail}
-                    className="absolute pointer-events-auto w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gradient-to-br from-red-400 to-orange-600 hover:from-red-300 hover:to-orange-700 hover:scale-110 shadow-2xl shadow-red-500/60 flex items-center justify-center text-white font-bold transition-all duration-300"
-                    style={{
-                      animationName: showContactButtons ? "popIn" : "popOut",
-                      animationDuration: showContactButtons ? "0.5s" : "0.3s",
-                      animationTimingFunction: showContactButtons ? "cubic-bezier(0.34, 1.56, 0.64, 1)" : "ease-in",
-                      animationFillMode: showContactButtons ? "both" : "forwards",
-                      animationDelay: "0.3s",
-                      "--tx": "120px",
-                      "--ty": "0px",
-                    } as React.CSSProperties}
-                    title="Email"
-                  >
-                    <svg className="w-10 h-10 sm:w-12 sm:h-12" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                    </svg>
-                  </button>
+                      {/* Email Button - Square */}
+                      <button
+                        onClick={sendViaEmail}
+                        className="pointer-events-auto w-24 h-24 sm:w-28 sm:h-28 rounded-3xl bg-white/10 hover:bg-white/20 border-2 border-red-500 shadow-2xl shadow-red-500/50 flex items-center justify-center text-white font-bold transition-all duration-300 hover:scale-110"
+                        style={{
+                          animationName: "slideInRight",
+                          animationDuration: "0.6s",
+                          animationTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
+                          animationFillMode: "both",
+                          animationDelay: "0.2s",
+                        } as React.CSSProperties}
+                        title="Email"
+                      >
+                        <svg className="w-12 h-12 sm:w-14 sm:h-14" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
                 </div>
+              )}
 
-                <style>{`
-                  @keyframes popIn {
-                    0% {
-                      opacity: 0;
-                      transform: translate(0, 0) scale(0);
-                    }
-                    100% {
-                      opacity: 1;
-                      transform: translate(var(--tx), var(--ty)) scale(1);
-                    }
+              <style>{`
+                @keyframes slideInLeft {
+                  0% {
+                    opacity: 0;
+                    transform: translateX(-80px);
                   }
-                  @keyframes popOut {
-                    0% {
-                      opacity: 1;
-                      transform: translate(var(--tx), var(--ty)) scale(1);
-                    }
-                    100% {
-                      opacity: 0;
-                      transform: translate(0, 0) scale(0);
-                    }
+                  100% {
+                    opacity: 1;
+                    transform: translateX(0);
                   }
-                `}</style>
-              </div>
+                }
+                @keyframes slideInUp {
+                  0% {
+                    opacity: 0;
+                    transform: translateY(80px);
+                  }
+                  100% {
+                    opacity: 1;
+                    transform: translateY(0);
+                  }
+                }
+                @keyframes slideInRight {
+                  0% {
+                    opacity: 0;
+                    transform: translateX(80px);
+                  }
+                  100% {
+                    opacity: 1;
+                    transform: translateX(0);
+                  }
+                }
+              `}</style>
             </div>
           </div>
         </div>
