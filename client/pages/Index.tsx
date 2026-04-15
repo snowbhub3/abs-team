@@ -314,7 +314,10 @@ export default function Index() {
                     onClick={sendViaWhatsApp}
                     className="absolute pointer-events-auto w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gradient-to-br from-green-400 to-green-600 hover:from-green-300 hover:to-green-700 hover:scale-110 shadow-2xl shadow-green-500/60 flex items-center justify-center text-white font-bold transition-all duration-300"
                     style={{
-                      animation: showContactButtons ? "popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both" : "popOut 0.3s ease-in forwards",
+                      animationName: showContactButtons ? "popIn" : "popOut",
+                      animationDuration: showContactButtons ? "0.5s" : "0.3s",
+                      animationTimingFunction: showContactButtons ? "cubic-bezier(0.34, 1.56, 0.64, 1)" : "ease-in",
+                      animationFillMode: showContactButtons ? "both" : "forwards",
                       animationDelay: "0.1s",
                       "--tx": "-120px",
                       "--ty": "0px",
@@ -331,7 +334,10 @@ export default function Index() {
                     onClick={sendViaTelegram}
                     className="absolute pointer-events-auto w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gradient-to-br from-sky-400 to-sky-600 hover:from-sky-300 hover:to-sky-700 hover:scale-110 shadow-2xl shadow-sky-500/60 flex items-center justify-center text-white font-bold transition-all duration-300"
                     style={{
-                      animation: showContactButtons ? "popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both" : "popOut 0.3s ease-in forwards",
+                      animationName: showContactButtons ? "popIn" : "popOut",
+                      animationDuration: showContactButtons ? "0.5s" : "0.3s",
+                      animationTimingFunction: showContactButtons ? "cubic-bezier(0.34, 1.56, 0.64, 1)" : "ease-in",
+                      animationFillMode: showContactButtons ? "both" : "forwards",
                       animationDelay: "0.2s",
                       "--tx": "0px",
                       "--ty": "-140px",
@@ -348,7 +354,10 @@ export default function Index() {
                     onClick={sendViaEmail}
                     className="absolute pointer-events-auto w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gradient-to-br from-red-400 to-orange-600 hover:from-red-300 hover:to-orange-700 hover:scale-110 shadow-2xl shadow-red-500/60 flex items-center justify-center text-white font-bold transition-all duration-300"
                     style={{
-                      animation: showContactButtons ? "popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both" : "popOut 0.3s ease-in forwards",
+                      animationName: showContactButtons ? "popIn" : "popOut",
+                      animationDuration: showContactButtons ? "0.5s" : "0.3s",
+                      animationTimingFunction: showContactButtons ? "cubic-bezier(0.34, 1.56, 0.64, 1)" : "ease-in",
+                      animationFillMode: showContactButtons ? "both" : "forwards",
                       animationDelay: "0.3s",
                       "--tx": "120px",
                       "--ty": "0px",
