@@ -287,120 +287,88 @@ export default function Index() {
                     className="w-full bg-white/50 dark:bg-white/[0.05] backdrop-blur-sm border border-black/10 dark:border-white/10 focus:border-sky-400/50 focus:ring-2 focus:ring-sky-400/40 placeholder:text-foreground/50 text-foreground rounded-2xl resize-none transition-all duration-200 mb-8 p-4 sm:p-6 text-sm sm:text-base"
                   />
 
-                  <div className="flex justify-center">
+                  <div className="flex justify-center items-center min-h-24 sm:min-h-28">
+                    {/* Send Button */}
                     <Button
                       type="submit"
-                      className={`bg-gradient-to-r from-sky-500 via-sky-500 to-cyan-500 hover:from-sky-400 hover:via-sky-400 hover:to-cyan-400 text-white h-14 sm:h-16 font-bold shadow-lg shadow-sky-500/30 hover:shadow-sky-500/50 transition-all duration-300 active:scale-95 whitespace-nowrap px-10 text-base sm:text-lg rounded-2xl ${showContactButtons ? "opacity-0 scale-0" : "opacity-100 scale-100"}`}
+                      className={`bg-gradient-to-r from-sky-500 via-sky-500 to-cyan-500 hover:from-sky-400 hover:via-sky-400 hover:to-cyan-400 text-white h-14 sm:h-16 font-bold shadow-lg shadow-sky-500/30 hover:shadow-sky-500/50 transition-all duration-300 active:scale-95 whitespace-nowrap px-10 text-base sm:text-lg rounded-2xl absolute ${showContactButtons ? "opacity-0 scale-0 pointer-events-none" : "opacity-100 scale-100"}`}
                     >
                       {t("form_send")}
                     </Button>
+
+                    {/* Social Buttons - appear in place of send button */}
+                    {showContactButtons && (
+                      <div className="flex items-center justify-center gap-4 sm:gap-6 w-full">
+                        {/* WhatsApp */}
+                        <button
+                          onClick={sendViaWhatsApp}
+                          className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-white/10 hover:bg-white/20 border-2 border-green-500 shadow-lg shadow-green-500/40 flex items-center justify-center transition-all duration-300 hover:scale-110"
+                          style={{
+                            animationName: "popIn",
+                            animationDuration: "0.5s",
+                            animationTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
+                            animationFillMode: "both",
+                            animationDelay: "0s",
+                          } as React.CSSProperties}
+                        >
+                          <img
+                            src="https://cdn.builder.io/api/v1/image/assets%2F9771a46ddd5946ce8be5cc856996d760%2F78852eb5ee844ab1bf6d81dcb7f4140f?format=webp&width=200"
+                            alt="WhatsApp"
+                            className="w-12 h-12 sm:w-16 sm:h-16"
+                          />
+                        </button>
+
+                        {/* Telegram */}
+                        <button
+                          onClick={sendViaTelegram}
+                          className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-white/10 hover:bg-white/20 border-2 border-sky-500 shadow-lg shadow-sky-500/40 flex items-center justify-center transition-all duration-300 hover:scale-110"
+                          style={{
+                            animationName: "popIn",
+                            animationDuration: "0.5s",
+                            animationTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
+                            animationFillMode: "both",
+                            animationDelay: "0.1s",
+                          } as React.CSSProperties}
+                        >
+                          <img
+                            src="https://cdn.builder.io/api/v1/image/assets%2F9771a46ddd5946ce8be5cc856996d760%2F93026108fa59460db9588f52b6045729?format=webp&width=200"
+                            alt="Telegram"
+                            className="w-12 h-12 sm:w-16 sm:h-16"
+                          />
+                        </button>
+
+                        {/* Email */}
+                        <button
+                          onClick={sendViaEmail}
+                          className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-white/10 hover:bg-white/20 border-2 border-red-500 shadow-lg shadow-red-500/40 flex items-center justify-center transition-all duration-300 hover:scale-110"
+                          style={{
+                            animationName: "popIn",
+                            animationDuration: "0.5s",
+                            animationTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
+                            animationFillMode: "both",
+                            animationDelay: "0.2s",
+                          } as React.CSSProperties}
+                        >
+                          <svg className="w-12 h-12 sm:w-16 sm:h-16" fill="white" viewBox="0 0 24 24">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                          </svg>
+                        </button>
+                      </div>
+                    )}
                   </div>
                 </div>
               </form>
 
-              {/* Animated Contact Buttons */}
-              {showContactButtons && (
-                <div className="fixed inset-0 pointer-events-auto z-40 flex items-center justify-center">
-                  {/* Backdrop - blur everything except the form */}
-                  <div
-                    className="absolute inset-0 bg-black/50 backdrop-blur-md"
-                    onClick={() => setShowContactButtons(false)}
-                  />
-
-                  {/* Form stays visible - positioned relative to viewport center */}
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 pointer-events-none">
-                    {/* Buttons Container - On same level horizontal */}
-                    <div className="flex items-center justify-center gap-6 sm:gap-8 mb-8">
-                      {/* WhatsApp Button - Square with logo */}
-                      <button
-                        onClick={sendViaWhatsApp}
-                        className="pointer-events-auto w-24 h-24 sm:w-28 sm:h-28 rounded-3xl bg-white/10 hover:bg-white/20 border-2 border-green-500 shadow-2xl shadow-green-500/50 flex items-center justify-center text-white font-bold transition-all duration-300 hover:scale-110"
-                        style={{
-                          animationName: "slideInLeft",
-                          animationDuration: "0.6s",
-                          animationTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
-                          animationFillMode: "both",
-                        } as React.CSSProperties}
-                        title="WhatsApp"
-                      >
-                        <img
-                          src="https://cdn.builder.io/api/v1/image/assets%2F9771a46ddd5946ce8be5cc856996d760%2F78852eb5ee844ab1bf6d81dcb7f4140f?format=webp&width=200"
-                          alt="WhatsApp"
-                          className="w-16 h-16 sm:w-20 sm:h-20"
-                        />
-                      </button>
-
-                      {/* Telegram Button - Square with logo */}
-                      <button
-                        onClick={sendViaTelegram}
-                        className="pointer-events-auto w-24 h-24 sm:w-28 sm:h-28 rounded-3xl bg-white/10 hover:bg-white/20 border-2 border-sky-500 shadow-2xl shadow-sky-500/50 flex items-center justify-center text-white font-bold transition-all duration-300 hover:scale-110"
-                        style={{
-                          animationName: "slideInUp",
-                          animationDuration: "0.6s",
-                          animationTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
-                          animationFillMode: "both",
-                          animationDelay: "0.1s",
-                        } as React.CSSProperties}
-                        title="Telegram"
-                      >
-                        <img
-                          src="https://cdn.builder.io/api/v1/image/assets%2F9771a46ddd5946ce8be5cc856996d760%2F93026108fa59460db9588f52b6045729?format=webp&width=200"
-                          alt="Telegram"
-                          className="w-16 h-16 sm:w-20 sm:h-20"
-                        />
-                      </button>
-
-                      {/* Email Button - Square */}
-                      <button
-                        onClick={sendViaEmail}
-                        className="pointer-events-auto w-24 h-24 sm:w-28 sm:h-28 rounded-3xl bg-white/10 hover:bg-white/20 border-2 border-red-500 shadow-2xl shadow-red-500/50 flex items-center justify-center text-white font-bold transition-all duration-300 hover:scale-110"
-                        style={{
-                          animationName: "slideInRight",
-                          animationDuration: "0.6s",
-                          animationTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
-                          animationFillMode: "both",
-                          animationDelay: "0.2s",
-                        } as React.CSSProperties}
-                        title="Email"
-                      >
-                        <svg className="w-12 h-12 sm:w-14 sm:h-14" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                        </svg>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              )}
-
+              {/* Animations styles */}
               <style>{`
-                @keyframes slideInLeft {
+                @keyframes popIn {
                   0% {
                     opacity: 0;
-                    transform: translateX(-80px);
+                    transform: scale(0);
                   }
                   100% {
                     opacity: 1;
-                    transform: translateX(0);
-                  }
-                }
-                @keyframes slideInUp {
-                  0% {
-                    opacity: 0;
-                    transform: translateY(80px);
-                  }
-                  100% {
-                    opacity: 1;
-                    transform: translateY(0);
-                  }
-                }
-                @keyframes slideInRight {
-                  0% {
-                    opacity: 0;
-                    transform: translateX(80px);
-                  }
-                  100% {
-                    opacity: 1;
-                    transform: translateX(0);
+                    transform: scale(1);
                   }
                 }
               `}</style>
