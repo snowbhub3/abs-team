@@ -298,11 +298,11 @@ export default function Index() {
 
                     {/* Social Buttons - appear in place of send button */}
                     {showContactButtons && (
-                      <div className="flex items-center justify-center gap-4 sm:gap-6 w-full">
+                      <div className="flex items-center justify-center gap-6 sm:gap-8 w-full">
                         {/* WhatsApp */}
                         <button
                           onClick={sendViaWhatsApp}
-                          className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-white/10 hover:bg-white/20 border-2 border-green-500 shadow-lg shadow-green-500/40 flex items-center justify-center transition-all duration-300 hover:scale-110"
+                          className="flex items-center justify-center transition-all duration-300 hover:scale-125"
                           style={{
                             animationName: "popIn",
                             animationDuration: "0.5s",
@@ -314,14 +314,14 @@ export default function Index() {
                           <img
                             src="https://cdn.builder.io/api/v1/image/assets%2F9771a46ddd5946ce8be5cc856996d760%2F78852eb5ee844ab1bf6d81dcb7f4140f?format=webp&width=200"
                             alt="WhatsApp"
-                            className="w-12 h-12 sm:w-16 sm:h-16"
+                            className="w-20 h-20 sm:w-28 sm:h-28"
                           />
                         </button>
 
                         {/* Telegram */}
                         <button
                           onClick={sendViaTelegram}
-                          className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-white/10 hover:bg-white/20 border-2 border-sky-500 shadow-lg shadow-sky-500/40 flex items-center justify-center transition-all duration-300 hover:scale-110"
+                          className="flex items-center justify-center transition-all duration-300 hover:scale-125"
                           style={{
                             animationName: "popIn",
                             animationDuration: "0.5s",
@@ -333,14 +333,14 @@ export default function Index() {
                           <img
                             src="https://cdn.builder.io/api/v1/image/assets%2F9771a46ddd5946ce8be5cc856996d760%2F93026108fa59460db9588f52b6045729?format=webp&width=200"
                             alt="Telegram"
-                            className="w-12 h-12 sm:w-16 sm:h-16"
+                            className="w-20 h-20 sm:w-28 sm:h-28"
                           />
                         </button>
 
                         {/* Email */}
                         <button
                           onClick={sendViaEmail}
-                          className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-white/10 hover:bg-white/20 border-2 border-red-500 shadow-lg shadow-red-500/40 flex items-center justify-center transition-all duration-300 hover:scale-110"
+                          className="flex items-center justify-center transition-all duration-300 hover:scale-125"
                           style={{
                             animationName: "popIn",
                             animationDuration: "0.5s",
@@ -349,7 +349,7 @@ export default function Index() {
                             animationDelay: "0.2s",
                           } as React.CSSProperties}
                         >
-                          <svg className="w-12 h-12 sm:w-16 sm:h-16" fill="white" viewBox="0 0 24 24">
+                          <svg className="w-20 h-20 sm:w-28 sm:h-28 text-white drop-shadow-lg" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                           </svg>
                         </button>
