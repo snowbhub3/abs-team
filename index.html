@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0b1220" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="language" content="English" />
+    <meta name="revisit-after" content="7 days" />
+    <meta name="author" content="abs team" />
+
+    <!-- Language alternates -->
+    <link rel="alternate" hreflang="en" href="https://abs-dev.team/" />
+    <link rel="alternate" hreflang="ru" href="https://abs-dev.team/" />
+    <link rel="alternate" hreflang="x-default" href="https://abs-dev.team/" />
+
+    <title>ABS Studio — Digitale Agentur | Landing Pages und Website-Abo</title>
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png?v=4" />
+    <link rel="apple-touch-icon" sizes="512x512" href="/abs-icon.png?v=4" />
+    <meta name="description" content="ABS Studio: Digitale Agentur für moderne Landing Pages und Websites mit Abo-Modell. Schnelle, SEO-optimierte Websites mit professioneller Betreuung für Dortmund und Deutschland." />
+    <meta name="keywords" content="Landingpage erstellen lassen Dortmund, Website Betreuung Abo, Digitale Agentur, Website Design, Webentwicklung NRW, Landing Page Agentur, SEO Optimierung" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="ABS Studio — Digitale Agentur für Landing Pages und Websites" />
+    <meta property="og:description" content="Moderne Landing Pages und Websites mit Abo-Modell. Schnell, SEO-optimiert und immer betreut. Jetzt kostenlosen Termin buchen!" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://abs-dev.team/" />
+    <meta property="og:image" content="/abs-icon.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:locale:alternate" content="ru_RU" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="ABS Studio — Digital Agency für Landing Pages" />
+    <meta name="twitter:description" content="Websites auf Abo. Modern, schnell, SEO-optimiert. Jetzt informieren!" />
+    <meta name="twitter:image" content="/abs-icon.png" />
+
+    <!-- Critical CSS for immediate display -->
+    <style>
+      :root {
+        --background: 0 0% 97.5%;
+        --foreground: 222.2 47% 12%;
+      }
+      .dark {
+        --background: 222.2 84% 4.9%;
+        --foreground: 210 40% 98%;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background-color: hsl(var(--background));
+        color: hsl(var(--foreground));
+        margin: 0;
+        padding: 0;
+        font-family: Inter, system-ui, sans-serif;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+      #root {
+        background-color: hsl(var(--background));
+        color: hsl(var(--foreground));
+      }
+    </style>
+    <!-- Detect dark mode immediately -->
+    <script>
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.classList.add('dark');
+      }
+    </script>
+
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "ABS Studio",
+      "description": "Digitale Agentur für moderne Landing Pages und Websites mit Abo-Modell. Schnelle, SEO-optimierte Websites mit professioneller Betreuung.",
+      "url": "https://abs-dev.team/",
+      "image": "/abs-icon.png",
+      "areaServed": {
+        "@type": "AdministrativeArea",
+        "name": "Dortmund, NRW, Deutschland"
+      },
+      "sameAs": [
+        "https://t.me/abs_devteam"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Customer Service",
+        "url": "https://t.me/abs_devteam",
+        "availableLanguage": ["de", "en", "ru"]
+      },
+      "serviceType": [
+        "Landing Page Design",
+        "Website Design",
+        "Web Development",
+        "SEO Optimization",
+        "Website Hosting",
+        "Subscription Service",
+        "Website Support"
+      ]
+    }
+    </script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XRR2ZETE2P"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XRR2ZETE2P');
+    </script>
+
+    <script type="module" src="/client/App.tsx"></script>
+  </body>
+</html>
