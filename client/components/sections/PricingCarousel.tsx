@@ -69,15 +69,15 @@ export function PricingCarousel() {
   };
 
   return (
-    <div id="preise" className="relative">
+    <div id="preise" className="relative scroll-mt-20 sm:scroll-mt-24">
       {/* Hero section */}
-      <section className="relative py-16 sm:py-20 lg:py-32 bg-white/[0.02]">
-        <div className="container max-w-4xl">
-          <div className="text-center mb-12 lg:mb-20">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-6">
+      <section className="relative bg-white/[0.02] py-8 sm:py-10 lg:py-12">
+        <div className="container max-w-4xl px-4 sm:px-6">
+          <div className="text-center">
+            <h2 className="mb-3 text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl md:text-5xl lg:text-5xl">
               {t("pricing_title")}
             </h2>
-            <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="mx-auto max-w-2xl text-sm text-muted-foreground sm:text-base lg:text-lg">
               {t("pricing_sub")}
             </p>
           </div>
@@ -85,20 +85,20 @@ export function PricingCarousel() {
       </section>
 
       {/* Pricing Carousel */}
-      <section className="relative py-16 sm:py-20 lg:py-32">
-        <div className="container">
+      <section className="relative py-6 sm:py-8 lg:py-12">
+        <div className="w-full">
           {/* Carousel Container */}
           <div className="relative px-0 sm:px-6">
             {/* Embla Carousel */}
-            <div className="overflow-hidden px-[9vw] sm:px-0" ref={emblaRef}>
-              <div className="flex gap-4 sm:gap-8 md:gap-6 py-4">
+            <div className="overflow-hidden px-4 sm:px-0" ref={emblaRef}>
+              <div className="flex gap-3 py-3 sm:gap-8 md:gap-6">
                 {plans.map((plan) => (
-                  <div key={plan.id} className="flex-[0_0_82%] sm:flex-[0_0_72%] md:flex-[0_0_calc(50%-12px)] lg:flex-[0_0_calc(33.333%-16px)] min-w-0 flex items-center justify-center">
+                  <div key={plan.id} className="flex-[0_0_calc(100%-2rem)] sm:flex-[0_0_72%] md:flex-[0_0_calc(50%-12px)] lg:flex-[0_0_calc(33.333%-16px)] min-w-0 flex items-stretch justify-center">
                     <Card
                       data-reveal
-                      className={`relative overflow-hidden border rounded-2xl p-6 sm:p-8 h-full flex flex-col opacity-100 transition-all duration-500 ${
+                      className={`relative overflow-hidden border rounded-2xl p-5 sm:p-8 h-full w-full flex flex-col opacity-100 transition-all duration-500 ${
                         plan.popular
-                          ? "md:scale-100 lg:scale-105 border-sky-500/50 bg-gradient-to-br from-sky-500/10 via-background to-background shadow-2xl shadow-sky-500/20"
+                          ? "border-sky-500/70 bg-gradient-to-br from-sky-500/10 via-background to-background shadow-2xl shadow-sky-500/20"
                           : "border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/[0.03]"
                       }`}
                     >
@@ -109,13 +109,13 @@ export function PricingCarousel() {
                       )}
 
                       {/* Plan name */}
-                      <div className="mb-6">
+                      <div className="mb-5">
                         <h3 className="text-xl sm:text-2xl font-bold mb-2">{t(plan.nameKey)}</h3>
                         <p className="text-xs sm:text-sm text-muted-foreground">{plan.descriptionKey}</p>
                       </div>
 
                       {/* Price */}
-                      <div className="mb-8">
+                      <div className="mb-6">
                         {plan.oldPrice && (
                           <div className="mb-1 flex items-center gap-2">
                             <span className="text-lg font-semibold text-muted-foreground line-through sm:text-xl">€{plan.oldPrice}</span>
@@ -124,9 +124,9 @@ export function PricingCarousel() {
                             </span>
                           </div>
                         )}
-                        <div className="flex items-baseline gap-2">
-                          <span className="text-4xl sm:text-5xl font-black">€{plan.price}</span>
-                          <span className="text-muted-foreground text-sm">{t("pricing_per_month")}</span>
+                        <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
+                          <span className="whitespace-nowrap text-4xl font-black leading-none sm:text-5xl">€{plan.price}</span>
+                          <span className="max-w-[7rem] text-sm leading-tight text-muted-foreground">{t("pricing_per_month")}</span>
                         </div>
                         <p className="text-xs text-muted-foreground mt-2">{t("pricing_billed")}</p>
                       </div>
@@ -134,7 +134,7 @@ export function PricingCarousel() {
                       {/* CTA Button */}
                       <Button
                         onClick={() => handleCTA(plan.id)}
-                        className={`w-full mb-8 h-11 font-semibold transition-all ${
+                        className={`mb-6 h-11 w-full font-semibold transition-all ${
                           plan.popular
                             ? "bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 text-white shadow-lg shadow-sky-500/25 hover:shadow-sky-500/40"
                             : "bg-black/10 dark:bg-white/10 hover:bg-black/20 dark:hover:bg-white/20"
@@ -144,7 +144,7 @@ export function PricingCarousel() {
                       </Button>
 
                       {/* Features list */}
-                      <div className="space-y-3 flex-1">
+                      <div className="flex-1 space-y-3">
                         <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
                           {t("pricing_includes")}
                         </p>
@@ -167,7 +167,7 @@ export function PricingCarousel() {
             </div>
           </div>
 
-          <div className="mx-auto mt-8 max-w-2xl text-center">
+          <div className="mx-auto mt-5 max-w-2xl px-4 text-center sm:mt-6">
             <p className="text-sm text-muted-foreground">
               {locale === "de"
                 ? "Individuelle Pläne ab €30 pro Monat für Freelancer und kleine Projekte."
@@ -178,7 +178,7 @@ export function PricingCarousel() {
           </div>
 
           {/* Scroll hint for mobile */}
-          <div className="md:hidden text-center mt-4">
+          <div className="mt-3 text-center md:hidden">
             <p className="text-xs text-muted-foreground">
               {locale === "de" ? "Streichen Sie für mehr Pläne" : locale === "en" ? "Swipe for more plans" : "Проведите для других планов"}
             </p>
